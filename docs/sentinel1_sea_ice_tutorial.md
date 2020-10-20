@@ -23,7 +23,7 @@ network approach that is very efficient at handling the big complex data.
 
 ## Overall Objective
 
-* We have initiaed a project that aims to use the SIP software system with innovative deep neural network models
+  * We have initiaed a project that aims to use the SIP software system with innovative deep neural network models
 tailored to the Sentinel-1 SAR sea ice characteristics for fast and accurate production of sea ice
 maps over large Arctic area using big Sentinel-1 SAR data in support of the climate change
 study and Arctic ship navigation, with the following sub-objectives:

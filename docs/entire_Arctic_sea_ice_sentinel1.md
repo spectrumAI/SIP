@@ -88,7 +88,7 @@
 
 ## Procedures of Experiment 4
 
-    1. The procedures are the same with Experiment 3. The only difference is that you need to download data on Sep. 3, 2019. You should be able to find 68 scenes for this experiment. 
+* The procedures are the same with Experiment 3. The only difference is that you need to download data on Sep. 3, 2019. You should be able to find 68 scenes for this experiment. 
 
 
 ## Procedures of Experiment 5
