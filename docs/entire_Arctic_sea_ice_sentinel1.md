@@ -1,10 +1,10 @@
-# Entire Arctic ocean sea ice mapping from Sentinel-1 images in the melting season 
+# Sea ice mapping of the entire Arctic ocean using Sentinel-1 images during the melting season 
 
 ## Tutorial Objectives
 
-* ***Explore the feasibility of using deep learning for fast and accurate large-scale sea ice mapping***
+* Explore the feasibility of using ***deep learning for fast and accurate large-scale sea ice mapping***.
 
-* ***Identify the best deep learning model and data processing pipeline for big complex remote sensing data processing*** (3).
+* Identify the best deep learning model and ***data processing pipeline for big complex remote sensing data*** processing.
 
 ## Deep learning models
 
@@ -25,7 +25,7 @@
     1. For each scene, train approach (1) using pixels sampels collected from the training images;
     1. Use the trained (1) to generate full label maps for the scene used for training;
     1. Calculate training and validation accuracies for this each scene;
-    1. Generate entire Arctic ocean sea ice map on Sep. 1 by mosaicing all label maps of all scenes together;
+    1. Generate sea ice label map for the entire Arctic ocean on Sep. 1 by mosaicing all label maps of all scenes together;
  
 1. ***Experiment 2: Train approach (1) using all scenes on Sep. 1 2019***
 
@@ -39,7 +39,7 @@
     1. For each scene, draw pixel-based test samples;
     1. Use the trained approach (1) to predict the label maps of all scenes on Sep. 2, 2019;
     1. Calculate test accuracies of approach (1) on Sep. 2, 2019; 
-    1. Generate entire Arctic ocean sea ice map on Sep. 2 by mosaicing all label maps of all scenes together;
+    1. Generate map for the entire Arctic ocean on Sep. 2 by mosaicing all label maps of all scenes together;
     1. Compare the Arctic ocean sea ice maps of Sep. 1 and Sep. 2, 2019;
 
 1. ***Experiment 4: Test trained approach 1 on all scenes on Sep. 3 2019***
@@ -48,7 +48,7 @@
     1. For each scene, draw pixel-based test samples;
     1. Use the trained approach (1) to predict the label maps of all scenes on Sep. 3, 2019;
     1. Calculate test accuracies of approach (1) on Sep. 3, 2019; 
-    1. Generate entire Arctic ocean sea ice map on Sep. 3 by mosaicing all label maps of all scenes together;
+    1. Generate map for the entire Arctic ocean on Sep. 3 by mosaicing all label maps of all scenes together;
     1. Compare the Arctic ocean sea ice maps of Sep. 1 Sep. 2 and Sep. 3, 2019;
 
 1. ***Experiment 5: Generate Arctic sea ice maps for Sep. 4, 5, ..., 31, 2019***
@@ -57,7 +57,7 @@
     1. For each scene, draw pixel-based test samples;
     1. Use the trained approach (1) to predict the label maps of these scenes;
     1. Calculate test accuracies of approach (1) for these days; 
-    1. Generate entire Arctic ocean sea ice map on these days by mosaicing all label maps of all scenes together;
+    1. Generate maps for the entire Arctic ocean on these days by mosaicing all label maps of all scenes together;
     1. Conduct time series analysis in Sep. 2019;
 
 ## Procedures of Experiment 1
