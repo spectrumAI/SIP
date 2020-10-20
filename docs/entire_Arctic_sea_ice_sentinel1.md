@@ -80,8 +80,8 @@
 * **Download data.** 
     1. Follow the same procedures in Experiment 1 to download the data. But, here you need to set the start date and the end date to Sep. 2, 2019. You should be able to download 54 scenes for this experiment. 
     1. Copy all files to the ***sentinel1_zip_dir*** folder defined in the ***config_os.yaml*** file. 
-    1. Preprocess the zip files using step 3, Experiment 1 in [previous tutorial](./combining_pixel_image_sea_ice_sentinel1.md). 
-    1. Draw test samples using step 4(ii), Experiment 1 in [previous tutorial](./combining_pixel_image_sea_ice_sentinel1.md). ***The only difference is that here you draw two classes, i.e., ice_test and water_test.***
+    1. Preprocess the zip files by following step 3, Experiment 1 in [previous tutorial](./combining_pixel_image_sea_ice_sentinel1.md). 
+    1. Draw test samples by following step 4(ii), Experiment 1 in [previous tutorial](./combining_pixel_image_sea_ice_sentinel1.md). ***The only difference is that here you draw two classes, i.e., ice_test and water_test.***
 
 * **Refer to [previous tutorial](./combining_pixel_image_sea_ice_sentinel1.md) Experiment 1 step 7, for detailed procedures.** 
  
@@ -93,5 +93,7 @@
 
 ## Procedures of Experiment 5
     1. Take a look at the label maps of the scenes in Experiment 3 and 4, and you may find some areas have been misclassified. Please re-draw these misclassified areas as training samples, and use them together with the samples in Experiment 1 to train the model. 
-    1. Use the trained model to predict the label maps on the other dates. 
-    1. Produce Arctic sea ice maps on these dates. 
+    
+    1. Use the trained model to predict the label maps on the other dates.
+    
+    1. Produce Arctic sea ice maps on these dates.
