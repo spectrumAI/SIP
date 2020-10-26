@@ -15,7 +15,7 @@ sentinel1_params:
 
     value_cut_params:
         to_calculate_cut_values: False
-        to_use_cut_values: False
+        to_use_cut_values: True
         min_value_cut: 10
         max_value_cut: 1000
 
@@ -438,8 +438,8 @@ net_params:
             crf: unknown
 
     dip_res: 
-        channels: 10
-        blocks: 2
+        channels: 7
+        blocks: 3
         act_fun: LeakyReLU  # LeakyRELU ReLU ...
         pad: reflection  # reflection zero ...
     
