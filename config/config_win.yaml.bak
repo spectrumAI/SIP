@@ -371,12 +371,12 @@ data_params:
         extract_patch_cuda: False # 'True' means performing F.unfold() on cuda()
 
         to_extract_patches_blockwise: True
-        extract_patches_block_size_r: 5000
-        extract_patches_block_size_c: 5000
+        extract_patches_block_size_r: 1000
+        extract_patches_block_size_c: 1000
 
         to_predict_patches_blockwise: True
-        predict_patches_block_size_r: 5000
-        predict_patches_block_size_c: 5000
+        predict_patches_block_size_r: 1000
+        predict_patches_block_size_c: 1000
         
 train_params: 
     lr: 0.0001
