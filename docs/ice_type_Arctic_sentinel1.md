@@ -51,7 +51,7 @@
     1. Copy all downloaed zip files to the ***input_dir_unzip_s1*** folder defined in the ***config_os.yaml*** file. 
     1. Run SIP software, and click on the ***Sentinel1*** item under the ***Preprocessing*** menu. 
     1. Select the ***input_dir_unzip_s1*** folder first and then select the ***config_os.yaml*** file. 
-    1. SIP will sequentially run ***(1) Preprocessing (including denoising and multilooking)***, ***(2) Geocoding and reprojecting Geotiff to Polar mapping system***, ***(3) Performing land masking using coastline shapefile*** and ***(4) Mosaicing all the scenes in the big images***. 
+    1. SIP will sequentially run ***(1) Preprocessing (including denoising and multilooking)***, ***(2) Geocoding and reprojecting Geotiff to Polar mapping system***, ***(3) Performing land masking using coastline shapefile*** and ***(4) Mosaicing all scenes into big images***. 
 
 * **Take a look at mosaic results**
     1. Once it finished, go to ***output_dir_merge_s1*** folder defined in ***config_os.yaml*** to make sure that there are three mosaic images, i.e., ***HH, HV and background_mask***. 
@@ -69,7 +69,7 @@
 
 * **Interpret the code of different polygons**
     1. Now, you see many polygons of the same color. Each polygon contains some ice classes. ***How do you know which classes are contained in a polygon?*** Click the ***Identify Features*** button, and then click on a polygon. Now, in QGIS, you should see features of this polygon, e.g., CT, CA, CB, etc. 
-    1. ***What does these symbols mean?*** 
+    1. ***What do these symbols mean?*** 
     1. ***CT=81*** means 81% of the pixels in this polygon is covered by ice. 
     1. ***CA=70, CB=20, CC=10*** means the ***thickest*** ice in this polygon has a percentage of 70%, the ***second thickest*** takes 20%, and the ***third thickest*** takes 10%. 
     1. ***How do I know ice types of these CA, CB and CC?*** 
