@@ -56,7 +56,7 @@ sentinel1_params:
             - '*002_*_background_mask_reprojected.tiff'
         destination_srs_mask_name_s1: EPSG:3413
         to_reproject_shp_mask_s1: False
-        shp_file_with_polygon_masks_s1: /home/l44xu/SIP/data/shoreline_shp/shoreline_shp.shp
+        shp_file_with_polygon_masks_s1: /home/l44xu/SIP/data/shoreline_shp/shoreline.shp
         to_skip_if_result_files_exist_mask: False
 
        
