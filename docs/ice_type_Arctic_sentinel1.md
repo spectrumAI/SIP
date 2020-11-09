@@ -1,8 +1,8 @@
-# Mapping of different ice types in Arctic ocean using Sentinel-1 images
+# Mapping different ice types in Arctic ocean using Sentinel-1 images
 
 ## Tutorial Objectives
 
-* Explore the feasibility of using ***deep learning for discriminating different ice types***.
+* Explore the feasibility of using ***deep learning for discriminating different ice types, i.e., old ice, first-year ice, young ice, grey ice, new ice and open water***.
 
 ## Deep learning models
 
@@ -33,12 +33,12 @@
 
 * ***Experiment 4: Test the trained model on Feb. 7, 2020***
 
-    1. Download Sentinel-1 images covering the entire Arctic ocean on ***Feb. 7***, 2020;
+    1. Download Sentinel-1 images covering the entire Arctic ocean on Feb. 7, 2020;
     1. Download ice chart on Feb. 7, 2020. 
     1. Preprocess and mosaic the scenes as in Experiment 1;
     1. Draw test samples according to ice chart;
     1. Use the trained model in Experiment 3 to predict the label maps of mosaic HH and HV images;
-    1. Calculate test accuracies, and compare with training and validation accuracies in Experiment 3;
+    1. Obtain ***test accuracies***, and compare with training and validation accuracies in Experiment 3;
     1. Generate ***map for the entire Arctic ocean on Feb. 7, 2020***;
 
 ## Procedures of Experiment 1
@@ -52,6 +52,8 @@
     1. Run SIP software, and click on the ***Sentinel1*** item under the ***Preprocessing*** menu. 
     1. Select the ***input_dir_unzip_s1*** folder first and then select the ***config_os.yaml*** file. 
     1. SIP will sequentially run ***(1) Preprocessing (including denoising and multilooking)***, ***(2) Geocoding and reprojecting Geotiff to Polar mapping system***, ***(3) Performing land masking using coastline shapefile*** and ***(4) Mosaicing all the scenes in the big images***. 
+
+* **Take a look at mosaic results**
     1. Once it finished, go to ***output_dir_merge_s1*** folder defined in ***config_os.yaml*** to make sure that there are three mosaic images, i.e., ***HH, HV and background_mask***. 
     1. Open the mosaiced ***HH, HV and background_mask*** images in QGIS to take a look. You can also open the ***coastline.shp*** file under ***SIP/data/coastline_shp*** folder to see whether the mosaics align well with the coastline. 
 
@@ -66,13 +68,26 @@
     1. Unzip the arctic190208.zip and open the ***.shp*** file in QGIS;
 
 * **Interpret the code of different polygons**
-    1. Now, you see many polygons of the same color. Each polygon contains some ice classes. ***How do you know which classes are contained in a polygon?*** Click the ***Identify Features*** button, and then click on a polygon. Then, in QGIS, you will see features of this polygon, e.g., CT, CA, CB, etc. ***What does these symbols mean?*** ***CT=81*** means 81% of the pixels in this polygon is covered by ice. ***CA=70, CB=20, CC=10*** means the ***thickest*** ice in this polygon has a percentage of 70%, the ***second thickest*** takes 20%, and the ***third thickest*** takes 10%. ***How do I know ice types of these CA, CB and CC?*** That is by looking at ***SA, SB and SC*** respectively. If ***SA=95***, then ***CA*** is ***old ice***. If ***SA=85***, then ***CA*** is ***Grey-White ice***. ***How do I interpret these code, e.g., 95, 85?***, See Table 4.2 in https://library.wmo.int/doc_num.php?explnum_id=9270.  
-    1. If ***SA=old_ice*** but ***SB=first_year_ice***, then, ***does this polygon belong to old_ice or first_year_ice***? It is by looking at values of ***CA and CB***. If ***CA>CB***, then there are more old ice than first year ice, and so it make sense to assign the whole polygon to be old ice, if you can only choose one class. You need to determine the class label for each polygon according to this rule. 
+    1. Now, you see many polygons of the same color. Each polygon contains some ice classes. ***How do you know which classes are contained in a polygon?*** Click the ***Identify Features*** button, and then click on a polygon. Now, in QGIS, you should see features of this polygon, e.g., CT, CA, CB, etc. 
+    1. ***What does these symbols mean?*** 
+    1. ***CT=81*** means 81% of the pixels in this polygon is covered by ice. 
+    1. ***CA=70, CB=20, CC=10*** means the ***thickest*** ice in this polygon has a percentage of 70%, the ***second thickest*** takes 20%, and the ***third thickest*** takes 10%. 
+    1. ***How do I know ice types of these CA, CB and CC?*** 
+    1. That is by looking at ***SA, SB and SC*** respectively. If ***SA=95***, then ***CA*** is ***old ice***. If ***SA=85***, then ***CA*** is ***Grey-White ice***. ***How do I interpret these code, e.g., 95, 85?***, See Table 4.2 in https://library.wmo.int/doc_num.php?explnum_id=9270.  
+
+* **What if SA, SB and SC tell different ice types? Which one to trust?**
+    1. If ***SA=old_ice*** but ***SB=first_year_ice***, then, ***does this polygon belong to old_ice or first_year_ice***? 
+    1. It is by looking at values of ***CA and CB***. If ***CA>CB***, then there are more old ice than first year ice, and so it make sense to assign the whole polygon to be old ice, if you can only choose one class. 
+    1. You need to determine the class label for each polygon according to this rule. 
 
 * **Identify the ice type of different polygons**
     1. Now, all polygons should appear the same color. To display different colors for different ice types, you need to display the ***SA*** field in the properties table. You can display it according by following this tutorial: http://www.qgistutorials.com/fr/docs/basic_vector_styling.html
     1. Suppose you now show different ***SA*** as different colors. You need to keep in mind that ***you cannot trust these colors as the ice types of different polygons***, because you have to use ***SB*** instead of ***SA***, if ***CA<CB***. You need to flip between the ice chart layer and the HV mosaic image layer to see what different ice types looks like. 
-    1. Six different classes (***open water, new ice, young ice, grey ice, first-year ice, old ice***) will be classified in SIP. So, you need to remember where these six classes are, to draw traning and validation samples in SIP. In ice chart, there are ***many different first-year ice types***. Here, different first year ice types in ice chart are treated as being one class, i.e., first-year ice, and Grey-white ice and grey ice are combined into grey ice, as in Reference 1 and 2 below.  
+
+* **Combine many ice types into 6 classes**
+    1. Six different classes (***open water, new ice, young ice, grey ice, first-year ice, old ice***) will be classified in SIP. 
+    1. So, you need to find and remember where these six classes are, in order to draw traning and validation samples in SIP. 
+    1. In ice chart, there are ***many different first-year ice types***. Here, different first year ice types in ice chart are treated as being one class, i.e., first-year ice, and Grey-white ice and grey ice are combined into grey ice, as in Reference 1 and 2 below.  
 
 ## Procedures of Experiment 3
 
