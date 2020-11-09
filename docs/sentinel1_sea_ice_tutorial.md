@@ -41,6 +41,7 @@ change researchers and end-users.
 
 * [Combining pixel-based and image-based CNNs for sea ice mapping from Sentinel-1 images](./combining_pixel_image_sea_ice_sentinel1.md)
 * [Sea ice mapping of the entire Arctic ocean using Sentinel-1 images](./entire_Arctic_sea_ice_sentinel1.md)
+* [Different sea ice types mapping in the Arctic ocean using Sentinel-1 images](./ice_type_Arctic_sentinel1.md)
 
 ## References
 

@@ -319,7 +319,7 @@ use_cuda: True
 
 classification_map_params:
 
-    num_classes: 2
+    num_classes: 6
    
     to_use_colors_and_classes_in_geotiff: False
  
@@ -327,13 +327,21 @@ classification_map_params:
         my_colors:
             - white # color of the background, e.g., land area in sea ice classification
             - yellow # color of the first class
+            - green
+            - red
+            - pink
+            - orange
             - indigo # color of the second class
         my_classes: # the class names you defined here have to be consistent with the class names appeared in GUI
                     # e.g., in GUI, if you have land_train, land_val, land_test, water_train, water_val, water_test, 
                     # then, here you need to have two classes, i.e., land and water. 
             - background # 0, background mask has to end with 'background_mask.xxx' 
-            - ice # 1, the first class name
-            - water # 2, the second class name
+            - old # 1, the first class name
+            - first # 2, the second class name
+            - young # 3
+            - grey # 4
+            - new # 5
+            - water # 6
 
     #define the indicator of the background class whose class identity is unknown
     #the color of the background class is defined as the first color in 'my_colors'
