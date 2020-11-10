@@ -44,7 +44,7 @@
 ## Procedures of Experiment 1
 
 * **Download data.** 
-    1. Go to https://search.asf.alaska.edu/#/. Click on ***Arctic map view*** under the ***Map projection*** panel. Please copy *POLYGON((162.1385 70.5747,170.3789 69.1826,173.0147 69.9109,-171.9991 66.2364,-165.3146 66.5971,-163.8295 70.5517,-141.0027 70.2103,-131.8234 69.4745,-118.7329 69.2591,-125.7601 72.4353,-123.7074 76.5085,-109.8374 80.0968,-90.9058 82.533,-66.0815 84.1377,-58.0219 83.4228,-18.0914 83.7729,12.2722 80.3598,31.7989 81.3237,61.4568 81.9729,88.5461 81.2813,98.6308 79.982,112.9429 76.1546,116.1535 73.5502,134.7756 74.093,130.9475 72.1052,138.6538 73.7119,133.8407 77.6527,153.1613 74.8675,151.2038 72.315,162.1385 70.5747))* and paste it to **Area of Interet** in the webpage. Click ***Filters*** and set ***starting date*** and ***end date*** to be 2019.09.01, ***File type*** to be L1 GRD MD, and ***Beam Mode*** to be EW. Click on ***Search***, and you should find 59 scenes. Download them. 
+    1. Go to https://search.asf.alaska.edu/#/. Click on ***Arctic map view*** under the ***Map projection*** panel. Please copy *POLYGON((162.1385 70.5747,170.3789 69.1826,173.0147 69.9109,-171.9991 66.2364,-165.3146 66.5971,-163.8295 70.5517,-141.0027 70.2103,-131.8234 69.4745,-118.7329 69.2591,-125.7601 72.4353,-123.7074 76.5085,-109.8374 80.0968,-90.9058 82.533,-66.0815 84.1377,-58.0219 83.4228,-18.0914 83.7729,12.2722 80.3598,31.7989 81.3237,61.4568 81.9729,88.5461 81.2813,98.6308 79.982,112.9429 76.1546,116.1535 73.5502,134.7756 74.093,130.9475 72.1052,138.6538 73.7119,133.8407 77.6527,153.1613 74.8675,151.2038 72.315,162.1385 70.5747))* and paste it to **Area of Interet** in the webpage. Click ***Filters*** and set ***starting date*** and ***end date*** to be 2019.02.08, ***File type*** to be L1 GRD MD, and ***Beam Mode*** to be EW. Click on ***Search***, and you should find 59 scenes. Download them. 
 
 * **Preprocess and Mosaic all downloaded scenes.**
     1. Copy ***config_os.yaml.bak*** to ***config_os.yaml*** and change all directories to your own directories.
@@ -73,7 +73,7 @@
     1. ***CT=81*** means 81% of the pixels in this polygon is covered by ice. 
     1. ***CA=70, CB=20, CC=10*** means the ***thickest*** ice in this polygon has a percentage of 70%, the ***second thickest*** takes 20%, and the ***third thickest*** takes 10%. 
     1. ***How do I know ice types of these CA, CB and CC?*** 
-    1. That is by looking at ***SA, SB and SC*** respectively. If ***SA=95***, then ***CA*** is ***old ice***. If ***SA=85***, then ***CA*** is ***Grey-White ice***. ***How do I interpret these code, e.g., 95, 85?***, See Table 4.2 in https://library.wmo.int/doc_num.php?explnum_id=9270.  
+    1. That is by looking at ***SA, SB and SC*** respectively. If ***SA=95***, then ***CA*** is ***old ice***. If ***SA=85***, then ***CA*** is ***Grey-White ice***. ***How do I interpret these code, e.g., 95, 85?*** See Table 4.2 in https://library.wmo.int/doc_num.php?explnum_id=9270.  
 
 * **What if SA, SB and SC tell different ice types? Which one to trust?**
     1. If ***SA=old_ice*** but ***SB=first_year_ice***, then, ***does this polygon belong to old_ice or first_year_ice***? 
@@ -81,8 +81,10 @@
     1. You need to determine the class label for each polygon according to this rule. 
 
 * **Identify the ice type of different polygons**
-    1. Now, all polygons should appear the same color. To display different colors for different ice types, you need to display the ***SA*** field in the properties table. You can display it according by following this tutorial: http://www.qgistutorials.com/fr/docs/basic_vector_styling.html
-    1. Suppose you now show different ***SA*** as different colors. You need to keep in mind that ***you cannot trust these colors as the ice types of different polygons***, because you have to use ***SB*** instead of ***SA***, if ***CA<CB***. You need to flip between the ice chart layer and the HV mosaic image layer to see what different ice types looks like. 
+    1. Now, all polygons should appear the same color. To display different colors for different ice types, you can use this tutorial: http://www.qgistutorials.com/fr/docs/basic_vector_styling.html. But, in the ***Column*** text field, click on the ***right most math symbol*** to open the ***Expression Dialog***. Type the following code in the left part of the dialog:
+    1. ```("CA">="CB" AND "CA">="CC")*"SA" + ("CB">"CA" AND "CB">"CC")*"SB" +("CC">"CA" and "CC">"CB")*"SC"```
+    1. Now, if ***CA>CB>CC***, ***SA*** will be used. Otherwise, if ***CB*** is the biggest, ***SB*** will be used, and ***SC*** will be used if ***CC*** is the biggest. 
+    1. You need to flip between the ice chart layer and the HV mosaic image layer to see what different ice types looks like. 
 
 * **Combine many ice types into 6 classes**
     1. Six different classes (***open water, new ice, young ice, grey ice, first-year ice, old ice***) will be classified in SIP. 
