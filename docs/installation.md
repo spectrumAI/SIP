@@ -27,8 +27,6 @@ conda install -c anaconda scikit-image
 conda install -c anaconda scikit-learn
 conda install pyyaml
 
-pip3 install s1-noisefloor -U
-
 conda install git
 ```
 

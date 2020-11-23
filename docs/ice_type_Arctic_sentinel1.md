@@ -7,6 +7,7 @@
 ## Deep learning models
 
 * Approach (1): Pixel/patch-based CNN algorithm
+* Approach (2): Fully convolutional network (FCN) algorithm
 
 ## Key challenges
 
@@ -40,6 +41,21 @@
     1. Use the trained model in Experiment 3 to predict the label maps of mosaic HH and HV images;
     1. Obtain ***test accuracies***, and compare with training and validation accuracies in Experiment 3;
     1. Generate ***map for the entire Arctic ocean on Feb. 7, 2020***;
+
+* ***Experiment 5: Train Approach (2) on Feb. 8, 2019***
+    1. Open the mosaic image of Feb. 8, 2019 in SIP, and draw more polygon training samples for different classes. Why do we need more training samples here? The approach (2), i.e., FCN algorithm, needs more polygon-based training samples to achieve better results. 
+    1. Generate training and validation masks.
+    1. Split the mosaic images and associated training and validation masks into small sub-images, e.g., 256-by-256 images. These sub-images will be used as training samples for training the FCN algorithm. 
+    1. Train FCN model.
+    1. Predict all sub-images that are used for training to get label maps of sub-images. 
+    1. Mosaic all label maps of sub-images into a big label map that covers the whole Arctic area. 
+ 
+* ***Experiment 6: Test the trained approach (2) model on Feb. 7, 2020***
+    1. Split the mosaic image of Feb. 07, 2020 into sub-images.
+    1. Use the trained FCN model in Experiment 5 to predict all sub-images of Feb. 07, 2020 to generate label maps of sub-images.
+    1. Mosaic all label maps of sub-images into a big label map that covers the entire Arctic area.
+    1. Compare the label maps of Feb. 08, 2019 and that of Feb. 07, 2020. Compare the accuracies of these two maps. 
+
 
 ## Procedures of Experiment 1
 

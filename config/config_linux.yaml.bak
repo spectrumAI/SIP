@@ -17,7 +17,7 @@ sentinel1_params:
     
     ### (B) preprocess s1, e.g., incidence angle correction, thernal noise removal, etc. 
     s1_preprocess_params:
-        to_preprocess_s1: True
+        to_preprocess_s1: False
         input_dir_preprocess_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel_raw_zip
         output_dir_preprocess_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/preprocessed
         preprocess_s1_id_str: 
@@ -32,13 +32,13 @@ sentinel1_params:
 
     ### (C) geocode and reproject s1
     s1_reproject_params:
-        to_reproject_s1: True
+        to_reproject_s1: False
         input_dir_reproject_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/preprocessed
         output_dir_reproject_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject
         reproject_s1_id_str: 
             - '*hh*001*t.tiff'
             - '*hv*002*t.tiff'
-            - '*_*_background_mask.tiff'
+            - '*bk*003*t.tiff'
         resampling_methods_reproject_s1:
             - average
             - average
@@ -49,11 +49,11 @@ sentinel1_params:
 
     ### (D) mask out some polygons defined in shapefile, e.g., land areas
     s1_mask_params:
-        to_mask_out_polygons_s1: True
+        to_mask_out_polygons_s1: False
         input_dir_mask_out_polygons_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject
         output_dir_mask_out_polygons_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject
         mask_s1_id_str: 
-            - '*002_*_background_mask_reprojected.tiff'
+            - '*bk*003*-reprojected.tiff'
         destination_srs_mask_name_s1: EPSG:3413
         to_reproject_shp_mask_s1: False
         shp_file_with_polygon_masks_s1: /home/l44xu/SIP/data/shoreline_shp/shoreline.shp
@@ -66,8 +66,8 @@ sentinel1_params:
         input_dir_enhance_reproject_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject
         output_dir_enhance_reproject_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject_enhance
         enhance_reproject_s1_id_str: 
-            - '*hh*001*t_reprojected.tiff'
-            - '*hv*002*t_reprojected.tiff'
+            - '*hh*001*t-reprojected.tiff'
+            - '*hv*002*t-reprojected.tiff'
         min_value_cut_enhance_reproject: 10
         max_value_cut_enhance_reproject: 250
         to_skip_if_result_files_exist_enhance_reproject: False
@@ -75,13 +75,14 @@ sentinel1_params:
 
     ### (F) merge GeoTiff files into a single Geotiff
     s1_merge_params:
-        to_merge_s1: True
+        to_merge_s1: False
         input_dir_merge_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject
         output_dir_merge_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/mosaic
         merge_s1_id_str: 
-            - '*hh*001*t_reprojected.tiff'
-            - '*hv*002*t_reprojected.tiff'
-            - '*002_*_background_mask_reprojected_polygon_masked.tiff'
+            - '*hh*001*t-reprojected.tiff'
+            - '*hv*002*t-reprojected.tiff'
+            - '*bk*003*-reprojected-polygon-masked.tiff'
+            #- '*geocoded.tiff'
         to_skip_if_result_files_exist_merge: False
 
         
@@ -91,8 +92,8 @@ sentinel1_params:
         input_dir_enhance_merge_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/mosaic
         output_dir_enhance_merge_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/mosaic_enhance
         enhance_merge_s1_id_str: 
-            - '*hh*001*t_reprojected_merged.tiff'
-            - '*hv*002*t_reprojected_merged.tiff'
+            - '*hh*001*t-reprojected-merged.tiff'
+            - '*hv*002*t-reprojected-merged.tiff'
         min_value_cut_enhance_merge: 10
         max_value_cut_enhance_merge: 250
         to_skip_if_result_files_exist_enhance_merge: False
@@ -100,15 +101,21 @@ sentinel1_params:
 
     ### (H) breaking mosaic into small blocks        
     s1_generate_small_blocks_params:
-        to_generate_small_blocks_s1: False
+        to_generate_small_blocks_s1: True
         input_dir_small_blocks_s1:  /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/mosaic
         output_dir_small_blocks_s1:  /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/small_blocks
         generate_small_blocks_s1_id_str:
-            - '*hh*001*t_reprojected_merged.tiff'
-            - '*hv*002*t_reprojected_merged.tiff'
-            - '002_*_background_mask_reprojected_merged.tiff'
-        block_height_s1: 1028
-        block_width_s1: 1028
+            - '*hh*001*merged.tiff'
+            - '*hv*002*merged.tiff'
+            - '*bk*003*merged.tiff'
+            - '*merged-train-mask.png'
+            - '*merged-val-mask.png'
+        to_remove_blocks_dominated_by_background_pixels_s1: True
+        to_remove_blocks_with_limited_training_pixels_s1: True
+        training_sample_thrd_s1: 1000
+
+       block_height_s1: 256
+        block_width_s1: 256
         block_height_overlap_s1: 20
         block_width_overlap_s1: 20
         to_skip_if_result_files_exist_blocks: False
@@ -235,8 +242,8 @@ raw_data_params:
         start: 26
         end: 71
     raw_band_names: # each raw scene contrain the following bands, each of which is a seperate image in 'raw_img_type' format
-        - hh
-        - hv
+        - '*hh*001*.tiff'
+        - '*hv*002*.tiff'
 
 #########################################################################
 # (A) config directories of images and ground-truth (GT) for classification
@@ -379,17 +386,21 @@ data_params:
         predict_patches_block_size_c: 1000
         
 train_params: 
-    lr: 0.0001
-    epoch: 10 
-    batch_size_train: 1000 # batch_size when doing training
-    batch_size_val: 1000 # batch_size when doing val and test
-    val_inter: 1 # if 1, then validation and test are used in each epoch 
+    lr: 0.01
+    epoch: 200
+    batch_size_train: 16 # batch_size when doing training
+    batch_size_val: 16 # batch_size when doing val and test
+    val_inter: 5 # if 1, then validation and test are used in each epoch 
     to_test: False # is True, both validation and test data will be used to evaluate training
     prop_test: 1 # if 0.1, then 10% of all test samples are used in each epoch
     prop_train: 1 #0.01 # if 0.1, then 10% of all train samples are used in each epoch
     var: 0 # std of noise added to input when using images as input 
-    net_type: ss_res
+    net_type: dip-res
  
+    to_resume_from_latest_checkpoint: True
+    resume_checkpoint_file: dip-res-batchSize16-lr0.01-time20201113143717-checkpoint.pth.tar 
+
+
     train_mask_save_options:
         save_train_mask: False
         img_format: png
@@ -407,7 +418,7 @@ train_params:
         save_soft_label: False
         img_format: png
         copy_map_to_raw_data_dir: True
-        save_map_over_epoch: True
+        save_map_over_epoch: False
         use_background_pixels: False
     
 train_result_params:
@@ -416,7 +427,7 @@ train_result_params:
     train_config_file: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_bestEpoch5_lr0.0001_time20201104015737__time20201104015737_train_config.yaml
 
 test_params:
-    batch_size: 1000 # batch size for test
+    batch_size: 4 # batch size for test
     
     test_mask_save_options:
         save_test_mask: False
@@ -443,7 +454,7 @@ test_result_params:
 
 predict_params:
     
-    batch_size: 1000 # batch size for predict
+    batch_size: 4 # batch size for predict
     
     input_img_save_options:
         save_input_img: False # if True, original images will be saved
@@ -474,14 +485,14 @@ predict_result_params:
 
 net_params:
     
-    ss_res: 
+    ss-res: 
         channels: 10
         blocks: 3
         is_bn: True
         is_dropout: False
         p: -0.2
     
-    ss_cnn: 
+    ss-cnn: 
         feature_nums:
             - 16
             - 32
@@ -549,20 +560,20 @@ net_params:
         crf:
             crf: unknown
 
-    dip_res: 
-        channels: 7
-        blocks: 1
+    dip-res: 
+        channels: 20
+        blocks: 5
         act_fun: LeakyReLU  # LeakyRELU ReLU ...
         pad: reflection  # reflection zero ...
     
     
 
 dip_model_list:
-    - dip_res
+    - dip-res
 
 patch_model_list:
-    - ss_res
-    - ss_cnn
+    - ss-res
+    - ss-cnn
 
 classic_ml_model_list:
     - svm
