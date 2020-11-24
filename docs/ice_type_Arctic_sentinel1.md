@@ -141,7 +141,97 @@
 
     1. Open the generated classificaiton map in QGIS and compare it with the HV image and the ice chart.
     1. Also, compare it the classification map on Feb. 8, 2019. 
- 
+
+## Procedure of Experiment 5
+
+* **Draw more training samples**
+
+    1. In SIP, open the mosaic HV image on Feb. 8, 2019 from Experiment 1. Draw more polygon-based training samples for different classes. You can also increase the number of validation samples for different classes. 
+
+    1. In SIP, generate training and validation masks to include the new samples. 
+
+* **Generate small blocks**
+
+    1. Open the ***config_os.yaml*** file, make sure ***to_generate_small_blocks_s1*** is ***True***, and the ***generate_small_blocks_s1_id_str*** contains the string patterns for finding all relevant files you want to process. 
+
+    1. By default, ***training_sample_thrd_s1: 1000*** means that any blocks that have less than 1000 samples will be removed from model training by moving these blocks into another folder with name ***removed_blocks_training*** under ***output_dir_small_blocks_s1***. 
+
+    1. You will need to change 1000 to be a smaller value if you did not draw a lot of poloygons as training samples and most of your ground truth samples are obtained by drawing lines. 
+
+    1. Also make sure that all the other preprocessing options, e.g., ***to_merge_s1***, are all set to ***False***, because you just want to generate small blocks. 
+
+    1. In SIP, click on ***Preprocessing -> Sentinel1***, and then select the zip folder and then the config_os.yaml file you just edited to generate small blocks.
+
+* **Train Approach 2 FCN model**
+
+    1. Open the ***config_os.yaml*** file, make sure the ***net_type*** is ***dip_res***. By default,we have the following settings ***lr: 0.01***, ***epoch: 200***, ***batch_size_train: 16***, ***batch_size_val: 16***, ***batch_size_predict: 16***. 
+
+    1. In SIP, train model using the config_os.yaml you just edited. 
+
+* **Predict both training blocks and removed blocks**
+
+    1. After training finished, the images used for training will be automatically predicted, and label maps will be saved in the ***dirs -> save -> train*** folder defined in ***config_os.yaml***. You can go to this folder to take a look at the labels maps generated. 
+
+    1. If ***training_sample_thrd_s1*** in config_os.yaml is 1000, then some blocks with less than 1000 training pixels will have been removed from training, and been moved to a folder named ***removed_blocks_training*** under the ***output_dir_small_blocks_s1*** folder. You need to predict these removed blocks using the trained model. 
+
+    1. In config_os.yaml, change ***raw_data_params -> raw_img_dir*** to the ***removed_blocks_training*** folder in the previous step. 
+
+    1. In SIP, click on ***Prepare data*** to generate the ***data_file.yaml*** file under ***dirs -> data -> train*** folder defined in config_os.yaml. Copy this data_file.yaml and paste to ***dirs -> data -> predict*** folder and replace the existing file. 
+
+    1. In SIP, click on ***Predict image*** and select the config_os.yaml file you edited to predict all blocks under the ***removed_blocks_training*** folder. 
+
+    1. Once prediction is finished, all label maps of removed blocks will be put in the ***dirs -> save -> predict*** folder defined in config_os.yaml. You can go to this folder to take a look. 
+
+    1. Now, you need to copy all label maps of training blocks in the ***dirs -> save -> train*** folder, and paste them into the ***dirs -> save -> predict*** folder to merge with the label maps of the removed blocks. 
+
+* **mosaic all label maps of sub-images/blocks**
+
+    1. In config_os.yaml, make sure ***to_merge_s1*** is ***True***, and ***all other preprocessing options are False***, e.g., ***to_generate_small_blocks_s1*** is ***False***. 
+
+    1. Make sure ***input_dir_merge_s1*** points to ***dirs -> save -> predict*** folder in config_os.yaml. Make sure ***merge_s1_id_str*** only has one string pattern, i.e., ```'*geocoded.tiff'```. Remove all the other string patterns by commenting them using '#'. 
+
+    1. In SIP, click on ***Preprocessing -> Sentinel1***, then select the zip folder and config_os.yaml to merge all label maps of the sub-images/blocks.
+
+    1. Once finished, you can go to ***output_dir_merge_s1*** folder defined in config_os.yaml to take a look at the mosaic label map covers that whole Arctic area. Open it in QGIS to examine the accuracy. 
+
+## Procedures of Experiment 6
+
+* **Prepare config file**
+    1. Copy config_os.yaml in Experiment 5 to the 2020.02.07_arctic folder.
+    
+    1. Open config_os.yaml, change all folders from 2019.02.08_arctic to be 2020.02.07_arctic.
+
+* **Split mosaic images to generate small blocks for Feb. 07, 2020***
+    1. The procedures are the same as in Experiment 5. 
+
+    1. One difference is that you need to set ***to_remove_blocks_with_limited_training_pixels_s1*** to be ***False***, such that no ocean blocks will be removed. 
+    
+    1. Another difference is that, when you run ***Preprocessing -> Sentinel1*** in SIP, you need to select the 2020.02.07_arctic folder, not the 2019.02.08_arctic folder. 
+
+    1. Once finished, all blocks should be in the ***output_dir_small_blocks_s1*** folder defined in config_os.yaml. 
+
+* **Predict all blocks***
+
+    1. In config_os.yaml, change ***raw_data_params -> raw_img_dir*** to the ***output_dir_small_blocks_s1*** folder in the previous step. 
+
+    1. In SIP, click on ***Prepare data*** to generate the ***data_file.yaml*** file under ***dirs -> data -> train*** folder defined in config_os.yaml. Copy this data_file.yaml and paste to ***dirs -> data -> predict*** folder and replace the existing file. 
+
+    1. In SIP, click on ***Predict image*** and select the config_os.yaml file you edited to predict all blocks under the ***removed_blocks_training*** folder. 
+
+    1. Once prediction is finished, all label maps of removed blocks will be put in the ***dirs -> save -> predict*** folder defined in config_os.yaml. You can go to this folder to take a look. 
+
+* **mosaic all label maps of sub-images/blocks**
+
+    1. In config_os.yaml, make sure ***to_merge_s1*** is ***True***, and ***all other preprocessing options are False***, e.g., ***to_generate_small_blocks_s1*** is ***False***. 
+
+    1. Make sure ***input_dir_merge_s1*** points to ***dirs -> save -> predict*** folder in config_os.yaml. Make sure ***merge_s1_id_str*** only has one string pattern, i.e., ```'*geocoded.tiff'```. Remove all the other string patterns by commenting them using '#'. 
+
+    1. In SIP, click on ***Preprocessing -> Sentinel1***, then select the zip folder and config_os.yaml to merge all label maps of the sub-images/blocks.
+
+    1. Once finished, you can go to ***output_dir_merge_s1*** folder defined in config_os.yaml to take a look at the mosaic label map covers that whole Arctic area. Open it in QGIS to examine the accuracy. 
+
+    1. Compare this label map with the label map of 2019.02.08 in QGIS. 
+
 ## References
 
 1. Boulze, Hugo, Anton Korosov, and Julien Brajard. "Classification of sea ice types in Sentinel-1 SAR data using convolutional neural networks." Remote Sensing 12.13 (2020): 2165.
