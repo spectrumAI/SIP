@@ -162,6 +162,11 @@
 
     1. In SIP, click on ***Preprocessing -> Sentinel1***, and then select the zip folder and then the config_os.yaml file you just edited to generate small blocks.
 
+* **Prepare data using the small blocks**
+    1. In config_os.yaml, change ***raw_data_params -> raw_img_dir*** to the ***output_dir_small_blocks_s1*** folder in the previous step. 
+
+    1. In SIP, click on ***Prepare data*** to generate the ***data_file.yaml*** file under ***dirs -> data -> train*** folder defined in config_os.yaml. Take a look at this data_file.yaml and make sure the files names are correct.  
+
 * **Train Approach 2 FCN model**
 
     1. Open the ***config_os.yaml*** file, make sure the ***net_type*** is ***dip_res***. By default,we have the following settings ***lr: 0.01***, ***epoch: 200***, ***batch_size_train: 16***, ***batch_size_val: 16***, ***batch_size_predict: 16***. 
