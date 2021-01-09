@@ -57,7 +57,7 @@ some pixels on these maps have labels, and most pixels do not have labels;
  
 1. **Edit config file.** 
     1. Copy the ***config_os.yaml.bak*** in the config folder and change its name to ***config_os.yaml***;
-    1. Find ***sentinel1_params***, ***raw_data_dir***, ***dirs***; ***For all directories in these three parameters, make sure you have changed them to your own directories***.
+    1. Find ***sentinel1_params***, ***raw_data_params***, ***dirs***; ***For all directories in these three parameters, make sure you have changed them to your own directories***.
     1. Make sure the ***train_params -> net_type*** is ***ss_res***. 
  
 1. **Download data.**
@@ -81,7 +81,8 @@ some pixels on these maps have labels, and most pixels do not have labels;
         1. Similarly, double click on ***ice_val*** to draw validation samples for the ice class, and ***water_train***, and ***water_val*** for training and validation samples of the water class. 
 
     1. **Prepare label mask.** 
-        1. Once sample drawing is finished and saved, click on ***"Get masks"*** under ***Classification*** menu;
+        1. Once sample drawing is finished and saved, modify ***classification_map_params*** in the config_os.yaml file by setting ***num_classes*** to 2, leave only 3 colours in ***my_colors***, and make ***my_classes*** have only ***background, ice, water***.
+        1. Click on ***"Get masks"*** under ***Classification*** menu;
         1. First select the config_os.yaml file you edited, and then select the csv file you just saved;
         1. This step transfer ROIs from vectors to mask images;
         1. Take a look at the png images generated in the ***raw_img_dir*** directory defined in the config file;
