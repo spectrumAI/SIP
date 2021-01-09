@@ -81,7 +81,7 @@ some pixels on these maps have labels, and most pixels do not have labels;
         1. Similarly, double click on ***ice_val*** to draw validation samples for the ice class, and ***water_train***, and ***water_val*** for training and validation samples of the water class. 
 
     1. **Prepare label mask.** 
-        1. Once sample drawing is finished and saved, modify ***classification_map_params*** in the config_os.yaml file by setting ***num_classes*** to 2, leave only 3 colours in ***my_colors***, and make ***my_classes*** have only ***background, ice, water***.
+        1. Once sample drawing is finished and saved, modify ***classification_map_params*** in the config_os.yaml file by setting ***num_classes*** to 2, leave only 3 colours in ***my_colors***, and make ***my_classes*** have only ***background, ice, water***;
         1. Click on ***"Get masks"*** under ***Classification*** menu;
         1. First select the config_os.yaml file you edited, and then select the csv file you just saved;
         1. This step transfer ROIs from vectors to mask images;
