@@ -58,7 +58,7 @@ some pixels on these maps have labels, and most pixels do not have labels;
 1. **Edit config file.** 
     1. Copy the ***config_os.yaml.bak*** in the config folder and change its name to ***config_os.yaml***;
     1. Find ***sentinel1_params***, ***raw_data_params***, ***dirs***; ***For all directories in these three parameters, make sure you have changed them to your own directories***.
-    1. Make sure the ***train_params -> net_type*** is ***ss_res***. 
+    1. Make sure the ***train_params -> net_type*** is ***ss-res***. 
  
 1. **Download data.**
     1. Go to https://search.asf.alaska.edu/#/. Please copy *POLYGON((-169.5982 69.4421,-157.2591 71.9421,-141.6889 70.0305,-135.3576 69.9672,-127.5021 71.384,-139.323 78.3118,-164.763 80.1023,-169.5982 69.4421))* and paste it to **Area of Interet** in the webpage. Click ***Filters*** and set ***starting date*** and ***end date*** to be 2019.09.01, ***File type*** to be L1 GRD MD, and ***Beam Mode*** to be EW. Click on ***Search***, and you should find 10 scenes. Download them. 
