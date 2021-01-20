@@ -149,7 +149,7 @@ some pixels on these maps have labels, and most pixels do not have labels;
     1. **Train classifier.** 
         1. Click on ***'Train classifier'*** under ***Classification*** menu and then choose the ***config_os.yaml*** file. 
         1. Once training is finished, go to ***raw_data_dir*** defined in the config file to take a look at the generated label maps of the training images. 
-        1. Go to ***dirs->save->model*** folder defined in the config file, check ***the training and validation accuracies*** in the ***train.log*** file.
+        1. Go to ***dirs->save->model*** folder defined in the config file, check ***the training and validation accuracies*** in the ***ss-res......train.log*** file.
         1. Go to ***dirs->save->model*** folder defined in the config file, check the label map over different epochs. If you do not want to generate these maps during iteration, you can set ***save_map_over_epoch*** in the config file to be False.  
     1. **Test classifier on all testing scenes** 
         1. Run ***"Test classifier"*** under ***Classification***. It will test the trained classifier on all test scenes. 
