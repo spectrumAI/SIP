@@ -75,15 +75,15 @@ some pixels on these maps have labels, and most pixels do not have labels;
         1. Copy the HH and HV images of one scene to the ***raw_data_params -> raw_img_dir*** directory, and make sure that this directory contains only this scene. 
     1. **Draw ground truth samples.**  
         1. Click on ***Open an image*** button to select a HV channel image in the ***raw_data_params -> raw_img_dir*** directory and open it. 
-        1. Click on ***Edit class labels"*** button, and type 4 in the ***Initialize labels*** dialog, and click ***ok***. In the next dialog, ***make sure*** you set the name of the 4 classes to be ***ice_train, ice_val, water_train, water_val*** respectively, and also specify different colours for them, click ***ok***. 
+        1. Click on ***Edit class labels"*** button, and type 3 (4 if default label doesn't exist) in the ***Initialize labels*** dialog, and click ***ok***. In the next dialog, ***make sure*** you set the name of the 4 classes to be ***ice_train, ice_val, water_train, water_val*** respectively, and also specify different colours for them. Click ***ok***. 
         1. Double click the ***ice_train*** item in the 'Label List' panel on the right to draw training samples for the ice class. Click on the ***Draw line*** button to draw lines on the ice covered area in the image. ***To finish drawing line and polygon, type 'c' from keyboard***. You can also ***Draw point***, or ***Draw polygon***. 
         1. ***Remember to frequently save your results using the default file name.*** 
         1. Similarly, double click on ***ice_val*** to draw validation samples for the ice class, and ***water_train***, and ***water_val*** for training and validation samples of the water class. 
 
     1. **Prepare label mask.** 
-        1. Once sample drawing is finished and saved, modify ***classification_map_params*** in the config_os.yaml file by setting ***num_classes*** to 2, leave only 3 colours in ***my_colors***, and make ***my_classes*** have only ***background, ice, water***;
+        1. Once sample drawing is finished and saved, modify ***classification_map_params*** in the ***config_os.yaml*** file by setting ***num_classes*** to 2, leave only 3 colours in ***my_colors***, and make ***my_classes*** have only ***background, ice, water***;
         1. Click on ***"Get masks"*** under ***Classification*** menu;
-        1. First select the config_os.yaml file you edited, and then select the csv file you just saved;
+        1. First select the ***config_os.yaml*** file you edited, and then select the csv file you just saved;
         1. This step transfer ROIs from vectors to mask images;
         1. Take a look at the png images generated in the ***raw_img_dir*** directory defined in the config file;
 
@@ -93,7 +93,7 @@ some pixels on these maps have labels, and most pixels do not have labels;
         1. Once finished, go to ***dirs->data->train/val/test/predict*** folders defined in the config file, to open and take a look at the ***data_file.yaml*** files.
 
     1. **Train classifier.** 
-        1. Click on ***'Train classifier'*** under ***Classification*** menu and then choose the config_os.yaml file. 
+        1. Click on ***'Train classifier'*** under ***Classification*** menu and then choose the ***config_os.yaml*** file. 
         1. Once training is finished (note this may take a while, depending on the performance of your graphics card), go to ***raw_data_dir*** defined in the config file to take a look at the generated label maps of the training images. 
         1. Go to ***dirs->save->model*** folder defined in the config file, check ***the training and validation accuracies*** in the ***train.log*** file.
 
@@ -106,7 +106,7 @@ some pixels on these maps have labels, and most pixels do not have labels;
 
 1. **Decide which scenes are used for training and which are used for testing**
     1. Change ***raw_data_params -> raw_img_dir*** in the ***config_os.yaml*** file to the ***sentinel1_gt*** folder, where you should have the ***.csv*** and ***.json*** files for all scenes. 
-    1. Set ***data_params -> patch_data_params -> save_extracted_patches*** in ***config_os.yaml*** to True.
+    1. Set ***data_params -> patch_data_params -> save_extracted_patches*** in ***config_os.yaml*** to ***True***.
     1. Randomly select about half of all the scenes for training and the left scenes for testing. 
     1. For the test scenes, please open them one by one in SIP and combine the ***ice_train*** and ***ice_val*** classes into the ***ice_test*** class, and combine the ***water_train*** and ***water_val*** classes into the ***water_test*** class. 
         1. Click on the ***Edit class labels*** button to add 2 more classes with names ***ice_test*** and ***water_test*** respectively, and also specify colours for them. 
@@ -147,7 +147,7 @@ some pixels on these maps have labels, and most pixels do not have labels;
 
 1. **Train and test the classifier using the training and test scenes**
     1. **Train classifier.** 
-        1. Click on ***'Train classifier'*** under ***Classification*** menu and then choose the config_os.yaml file. 
+        1. Click on ***'Train classifier'*** under ***Classification*** menu and then choose the ***config_os.yaml*** file. 
         1. Once training is finished, go to ***raw_data_dir*** defined in the config file to take a look at the generated label maps of the training images. 
         1. Go to ***dirs->save->model*** folder defined in the config file, check ***the training and validation accuracies*** in the ***train.log*** file.
         1. Go to ***dirs->save->model*** folder defined in the config file, check the label map over different epochs. If you do not want to generate these maps during iteration, you can set ***save_map_over_epoch*** in the config file to be False.  
