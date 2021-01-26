@@ -114,7 +114,7 @@ sentinel1_params:
         to_remove_blocks_with_limited_training_pixels_s1: True
         training_sample_thrd_s1: 1000
 
-       block_height_s1: 256
+        block_height_s1: 256
         block_width_s1: 256
         block_height_overlap_s1: 20
         block_width_overlap_s1: 20
@@ -397,7 +397,7 @@ train_params:
     var: 0 # std of noise added to input when using images as input 
     net_type: dip-res
  
-    to_resume_from_latest_checkpoint: True
+    to_resume_from_latest_checkpoint: False
     resume_checkpoint_file: dip-res-batchSize16-lr0.01-time20201113143717-checkpoint.pth.tar 
 
 
