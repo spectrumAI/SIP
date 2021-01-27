@@ -397,7 +397,7 @@ train_params:
     var: 0 # std of noise added to input when using images as input 
     net_type: dip-res
  
-    to_resume_from_latest_checkpoint: True
+    to_resume_from_latest_checkpoint: False
     resume_checkpoint_file: dip-res-batchSize16-lr0.01-time20201113143717-checkpoint.pth.tar 
 
 
