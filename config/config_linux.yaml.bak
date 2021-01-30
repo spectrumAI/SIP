@@ -10,16 +10,16 @@ sentinel1_params:
     ### (A) unzip the downloaded s1 zip files
     s1_unzip_params:
         to_unzip_s1: False
-        input_dir_unzip_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel_raw_zip
-        output_dir_unzip_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel_raw_zip
+        input_dir_unzip_s1: /home/l44xu/SIP/data/sentinel_raw_zip
+        output_dir_unzip_s1: /home/l44xu/SIP/data/sentinel_raw_zip
         unzip_s1_id_str: 
             - '*.zip'
     
     ### (B) preprocess s1, e.g., incidence angle correction, thernal noise removal, etc. 
     s1_preprocess_params:
         to_preprocess_s1: False
-        input_dir_preprocess_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel_raw_zip
-        output_dir_preprocess_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/preprocessed
+        input_dir_preprocess_s1: /home/l44xu/SIP/data/sentinel_raw_zip
+        output_dir_preprocess_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/preprocessed
         preprocess_s1_id_str: 
             - '*.zip'
         multilook_number_s1: 4
@@ -33,8 +33,8 @@ sentinel1_params:
     ### (C) geocode and reproject s1
     s1_reproject_params:
         to_reproject_s1: False
-        input_dir_reproject_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/preprocessed
-        output_dir_reproject_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject
+        input_dir_reproject_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/preprocessed
+        output_dir_reproject_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/reproject
         reproject_s1_id_str: 
             - '*hh*001*t.tiff'
             - '*hv*002*t.tiff'
@@ -50,8 +50,8 @@ sentinel1_params:
     ### (D) mask out some polygons defined in shapefile, e.g., land areas
     s1_mask_params:
         to_mask_out_polygons_s1: False
-        input_dir_mask_out_polygons_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject
-        output_dir_mask_out_polygons_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject
+        input_dir_mask_out_polygons_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/reproject
+        output_dir_mask_out_polygons_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/reproject
         mask_s1_id_str: 
             - '*bk*003*-reprojected.tiff'
         destination_srs_mask_name_s1: EPSG:3413
@@ -63,8 +63,8 @@ sentinel1_params:
     ### (E) enhance images by higlighting a specified value range
     s1_enhance_reproject_params:
         to_enhance_reproject_s1: False
-        input_dir_enhance_reproject_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject
-        output_dir_enhance_reproject_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject_enhance
+        input_dir_enhance_reproject_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/reproject
+        output_dir_enhance_reproject_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/reproject_enhance
         enhance_reproject_s1_id_str: 
             - '*hh*001*t-reprojected.tiff'
             - '*hv*002*t-reprojected.tiff'
@@ -76,8 +76,8 @@ sentinel1_params:
     ### (F) merge GeoTiff files into a single Geotiff
     s1_merge_params:
         to_merge_s1: False
-        input_dir_merge_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/reproject
-        output_dir_merge_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/mosaic
+        input_dir_merge_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/reproject
+        output_dir_merge_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/mosaic
         merge_s1_id_str: 
             - '*hh*001*t-reprojected.tiff'
             - '*hv*002*t-reprojected.tiff'
@@ -89,8 +89,8 @@ sentinel1_params:
     ### (G) enhance images by highlighting a specified value range
     s1_enhance_merge_params:
         to_enhance_merge_s1: False
-        input_dir_enhance_merge_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/mosaic
-        output_dir_enhance_merge_s1: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/mosaic_enhance
+        input_dir_enhance_merge_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/mosaic
+        output_dir_enhance_merge_s1: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/mosaic_enhance
         enhance_merge_s1_id_str: 
             - '*hh*001*t-reprojected-merged.tiff'
             - '*hv*002*t-reprojected-merged.tiff'
@@ -102,8 +102,8 @@ sentinel1_params:
     ### (H) breaking mosaic into small blocks        
     s1_generate_small_blocks_params:
         to_generate_small_blocks_s1: True
-        input_dir_small_blocks_s1:  /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/mosaic
-        output_dir_small_blocks_s1:  /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/small_blocks
+        input_dir_small_blocks_s1:  /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/mosaic
+        output_dir_small_blocks_s1:  /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/small_blocks
         generate_small_blocks_s1_id_str:
             - '*hh*001*merged.tiff'
             - '*hv*002*merged.tiff'
@@ -126,7 +126,7 @@ sentinel1_params:
 
 Modis_params:
     
-    Modis_hdf_dir: /media/l44xu/hulk/MOD13Q1_raw_hdf
+    Modis_hdf_dir: /home/l44xu/SIP/MOD13Q1_raw_hdf
     raw_Modis_format: hdf
     Modis_data_type: MOD13Q1 #MOD02QKM #MCD12Q1 #MOD09QA MCD64A1
 
@@ -141,8 +141,8 @@ Modis_params:
 
     Modis_hdf_to_tiff_params:
         to_tiff_Modis: True
-        input_dir_tiff_Modis: /media/l44xu/hulk/MOD13Q1_raw_hdf/
-        output_dir_tiff_Modis: /media/l44xu/hulk/MOD13Q1_raw_hdf/tiff/
+        input_dir_tiff_Modis: /home/l44xu/SIP/MOD13Q1_raw_hdf/
+        output_dir_tiff_Modis: /home/l44xu/SIP/MOD13Q1_raw_hdf/tiff/
         multilook_num: 1
         low_percentage_to_remove: 0.0
         high_percentage_to_remove: 0.0
@@ -154,36 +154,36 @@ Modis_params:
 
     Modis_mosaic_params:
         to_mosaic_Modis: True
-        input_dir_mosaic_Modis: /media/l44xu/hulk/MOD13Q1_raw_hdf/tiff/
-        output_dir_mosaic_Modis: /media/l44xu/hulk/MOD13Q1_raw_hdf/mosaic/
+        input_dir_mosaic_Modis: /home/l44xu/SIP/MOD13Q1_raw_hdf/tiff/
+        output_dir_mosaic_Modis: /home/l44xu/SIP/MOD13Q1_raw_hdf/mosaic/
         Modis_merge_days: 1
 
     Modis_reprojection_params:
         to_reproject_Modis: True
-        input_dir_reproject_Modis: /media/l44xu/hulk/MOD13Q1_raw_hdf/mosaic/
-        output_dir_reproject_Modis: /media/l44xu/hulk/MOD13Q1_raw_hdf/reprojection/
-        Modis_reprojection_destination_wkt_file: /media/l44xu/hulk/2019.02.08_arctic/wgs84_lambert_azimuthal_equal_area_wkt.txt
+        input_dir_reproject_Modis: /home/l44xu/SIP/MOD13Q1_raw_hdf/mosaic/
+        output_dir_reproject_Modis: /home/l44xu/SIP/MOD13Q1_raw_hdf/reprojection/
+        Modis_reprojection_destination_wkt_file: /home/l44xu/SIP/data/wgs84_lambert_azimuthal_equal_area_wkt.txt
         # if None, use default WGS_1984_Lambert_Azimuthal_Equal_Area
         Modis_resampling_method: nearest_neighbor
         Modis_output_resolution: 250
 
     Modis_clip_params:
         to_clip_Modis: True
-        input_dir_clip_Modis: /media/l44xu/hulk/MOD13Q1_raw_hdf/reprojection/
-        output_dir_clip_Modis: /media/l44xu/hulk/MOD13Q1_raw_hdf/clip/
-        bounding_box_shp_file: /media/l44xu/hulk/2019.02.08_arctic/canada_lc_classification/clipper.shp
-        bounding_box_geotiff_file: /media/l44xu/hulk/2019.02.08_arctic/canada_lc_classification/label_canada_250m.tif
-        bounding_box_mask_file: /media/l44xu/hulk/2019.02.08_arctic/canada_lc_classification/canada_mask.tiff
+        input_dir_clip_Modis: /home/l44xu/SIP/MOD13Q1_raw_hdf/reprojection/
+        output_dir_clip_Modis: /home/l44xu/SIP/MOD13Q1_raw_hdf/clip/
+        bounding_box_shp_file: /home/l44xu/SIP/data/canada_lc_classification/clipper.shp
+        bounding_box_geotiff_file: /home/l44xu/SIP/data/canada_lc_classification/label_canada_250m.tif
+        bounding_box_mask_file: /home/l44xu/SIP/data/canada_lc_classification/canada_mask.tiff
 
     Modis_extract_bands_params:
         to_extract_bands_Modis: False
-        input_dir_extract_bands_Modis: /media/l44xu/hulk/2019.02.08_arctic/MOD13Q1_raw_hdf/clip/
-        output_dir_extract_bands_Modis: /media/l44xu/hulk/2019.02.08_arctic/MOD13Q1_raw_hdf/extract/
+        input_dir_extract_bands_Modis: /home/l44xu/SIP/data/MOD13Q1_raw_hdf/clip/
+        output_dir_extract_bands_Modis: /home/l44xu/SIP/data/MOD13Q1_raw_hdf/extract/
     
     Modis_generate_small_blocks_params:
         to_generate_small_blocks_Modis: True
-        input_dir_small_blocks_Modis: /media/l44xu/hulk/MOD13Q1_raw_hdf/clip/
-        output_dir_small_blocks_Modis: /media/l44xu/hulk/2019.02.08_arctic/MOD13Q1_preprocessed_imgs/
+        input_dir_small_blocks_Modis: /home/l44xu/SIP/MOD13Q1_raw_hdf/clip/
+        output_dir_small_blocks_Modis: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs/
         block_height_Modis: 256
         block_width_Modis: 256
         block_height_overlap: 20
@@ -193,7 +193,7 @@ Modis_params:
         mask_band_idx: 6
         to_combine_data_into_time_series: True
         to_use_label_map_in_mask_blocks: True
-        Modis_label_map_file: /media/l44xu/hulk/2019.02.08_arctic/canada_lc_classification/label_canada_250m.tif
+        Modis_label_map_file: /home/l44xu/SIP/data/canada_lc_classification/label_canada_250m.tif
 
     Modis_space_saving_params:
         to_delete_output_tiff_files: True
@@ -203,7 +203,7 @@ Modis_params:
 ### (3) Landsat 
 
 Landsat_params:
-    Landsat_zip_dir: /media/l44xu/hulk/2019.02.08_arctic/landsat8_raw_zip
+    Landsat_zip_dir: /home/l44xu/SIP/data/landsat8_raw_zip
     raw_Landsat_format: tar.gz
     Landsat_data_type: LC08_L1TP #LT05_L1TP #LE07_L1TP LC08_L1TP
 
@@ -218,7 +218,7 @@ Landsat_params:
         min_value_cut: 0.0
         max_value_cut: 1961.0
 
-    output_raw_img_dir: /media/l44xu/hulk/2019.02.08_arctic/MOD13Q1_preprocessed_imgs_usa/
+    output_raw_img_dir: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs_usa/
 
 
 ### (4) RADARSAT Constelation mission (RCM) RCM SLC 
@@ -235,7 +235,7 @@ rcm_slc_cp_params:
 # Image data parameters
 ########################################################################
 raw_data_params:
-    raw_img_dir: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/
+    raw_img_dir: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/
     raw_img_type: tiff
     is_geotiff: True
     raw_id_str_range: #from 'start' to 'end' in the name of the raw image are the string that differenciate different scenes
@@ -267,16 +267,16 @@ dirs:
     data: 
     
         # (1.1) training_data_dir contains images with GT in training_mask_dir for training
-        train: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/data/train
+        train: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/data/train
         
         # (1.2) val_data_dir contains images with GT in val_data_dir for validation
-        val: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/data/val
+        val: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/data/val
         
         # (1.3) test_data_dir contains images with GT in test_mask_dir for test to acquire training accuracies
-        test: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/data/test
+        test: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/data/test
         
         # (1.4) predict_data_dir contains images that do not have GT for prediction to acquire classification maps
-        predict: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/data/predict
+        predict: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/data/predict
         
     #-----------------------------------------------------------------
     # (2) config GT directories
@@ -284,16 +284,16 @@ dirs:
     mask:   
      
         # (2.1) training_mask_dir contrains one-to-one matching masks with images in training_data_dir
-        train: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/mask/train
+        train: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/mask/train
         
         # (2.2) val_mask_dir contains one-to-one matching masks with images in val_data_dir
-        val: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/mask/val
+        val: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/mask/val
         
         # (2.3) test_mask_dir contains one-to-one matching masks with images in test_data_dir
-        test: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/mask/test
+        test: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/mask/test
 
         # (2.4) predict_mask_dir contains the background pixel masks for some images in predict_data_dir
-        predict: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/mask/predict
+        predict: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/mask/predict
         
     #------------------------------------------------------------------
     # (3) config results directories
@@ -301,19 +301,19 @@ dirs:
     save:
         
         # (3.1) specify directory to save model i.e. best model log file
-        model: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/model
+        model: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model
         
         # (3.2) specify directory to save training results i.e. maps accuracies
-        train: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/train
+        train: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/train
         
         # (3.3) specify directory to save val results i.e. maps accuracies
-        val: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/val
+        val: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/val
         
         # (3.4) specify directory to save test results i.e. maps accuracies
-        test: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/test
+        test: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/test
         
         # (3.5) specify directory to save predict results i.e. maps
-        predict: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/predict
+        predict: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/predict
         
 
 ######################################################################
@@ -326,7 +326,7 @@ use_cuda: True
 
 classification_map_params:
 
-    num_classes: 6
+    num_classes: 2
    
     to_use_colors_and_classes_in_geotiff: False
  
@@ -335,20 +335,20 @@ classification_map_params:
             - white # color of the background, e.g., land area in sea ice classification
             - yellow # color of the first class
             - green
-            - red
-            - pink
-            - orange
-            - indigo # color of the second class
+            #- red
+            #- pink
+            #- orange
+            #- indigo # color of the second class
         my_classes: # the class names you defined here have to be consistent with the class names appeared in GUI
                     # e.g., in GUI, if you have land_train, land_val, land_test, water_train, water_val, water_test, 
                     # then, here you need to have two classes, i.e., land and water. 
             - background # 0, background mask has to end with 'background_mask.xxx' 
-            - old # 1, the first class name
-            - first # 2, the second class name
-            - young # 3
-            - grey # 4
-            - new # 5
-            - water # 6
+            - ice # 1, the first class name
+            - water # 2, the second class name
+            #- young # 3
+            #- grey # 4
+            #- new # 5
+            #- water # 6
 
     #define the indicator of the background class whose class identity is unknown
     #the color of the background class is defined as the first color in 'my_colors'
@@ -386,16 +386,16 @@ data_params:
         predict_patches_block_size_c: 1000
         
 train_params: 
-    lr: 0.01
-    epoch: 200
-    batch_size_train: 16 # batch_size when doing training
-    batch_size_val: 16 # batch_size when doing val and test
-    val_inter: 5 # if 1, then validation and test are used in each epoch 
+    lr: 0.001
+    epoch: 20
+    batch_size_train: 1000 # batch_size when doing training
+    batch_size_val: 1000 # batch_size when doing val and test
+    val_inter: 1 # if 1, then validation and test are used in each epoch 
     to_test: False # is True, both validation and test data will be used to evaluate training
     prop_test: 1 # if 0.1, then 10% of all test samples are used in each epoch
     prop_train: 1 #0.01 # if 0.1, then 10% of all train samples are used in each epoch
     var: 0 # std of noise added to input when using images as input 
-    net_type: dip-res
+    net_type: ss-res
  
     to_resume_from_latest_checkpoint: False
     resume_checkpoint_file: dip-res-batchSize16-lr0.01-time20201113143717-checkpoint.pth.tar 
@@ -422,9 +422,9 @@ train_params:
         use_background_pixels: False
     
 train_result_params:
-    train_log_file: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_epoch10_lr0.0001_time20201104014025_train.log
+    train_log_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_epoch10_lr0.0001_time20201104014025_train.log
     model_file: ss_res_batchSize1000_bestEpoch5_lr0.0001_time20201104015737_weights.pkl
-    train_config_file: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_bestEpoch5_lr0.0001_time20201104015737__time20201104015737_train_config.yaml
+    train_config_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_bestEpoch5_lr0.0001_time20201104015737__time20201104015737_train_config.yaml
 
 test_params:
     batch_size: 4 # batch size for test
@@ -448,13 +448,13 @@ test_params:
         use_background_pixels: False
 
 test_result_params:
-    test_log_file: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/model/dip_res_batchSize1_epoch10_lr0.0001_time20201102205700_time20201102234058_test.log
-    test_config_file: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/model/dip_res_batchSize1_bestEpoch5_lr0.0001_time20201102205758_time20201102234058_test_config.yaml
+    test_log_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/dip_res_batchSize1_epoch10_lr0.0001_time20201102205700_time20201102234058_test.log
+    test_config_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/dip_res_batchSize1_bestEpoch5_lr0.0001_time20201102205758_time20201102234058_test_config.yaml
     
 
 predict_params:
     
-    batch_size: 4 # batch size for predict
+    batch_size: 1000 # batch size for predict
     
     input_img_save_options:
         save_input_img: False # if True, original images will be saved
@@ -473,8 +473,8 @@ predict_params:
         use_background_pixels: False
 
 predict_result_params:
-    predict_log_file: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/model/dip_res_batchSize1_epoch10_lr0.0001_time20201102205700_time20201102234111_predict.log
-    predict_config_file: /media/l44xu/hulk/2019.02.08_arctic/sentinel1_preprocessed_imgs/all_data/save/model/dip_res_batchSize1_bestEpoch5_lr0.0001_time20201102205758_time20201102234111_predict_config.yaml
+    predict_log_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/dip_res_batchSize1_epoch10_lr0.0001_time20201102205700_time20201102234111_predict.log
+    predict_config_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/dip_res_batchSize1_bestEpoch5_lr0.0001_time20201102205758_time20201102234111_predict_config.yaml
 
  
 
