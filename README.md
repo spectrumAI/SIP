@@ -3,7 +3,7 @@
 
 Intelligent pixel-level image classification using deep neural networks.
 
-![](./pics/vhr.png)
+![](./pics/sip_gui.png)
 
 # Features
 
