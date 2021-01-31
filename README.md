@@ -59,8 +59,8 @@ Intelligent pixel-level image classification using deep neural networks.
 - ***Double click a class*** in the ***Label List*** panel on the right to choose a class; 
 - Draw ***point, or line or polygon*** to add more samples for this class;
 - ***To finish drawing line and polygon, type 'c' from keyboard***;
-- Click ***save button*** and use ***the default name*** to save the your drawing;
-- Click ***Edit drawing button***, then put the mouse ***over an object***; when this object ***turns white***, press the ***Delete key*** to delete this object; 
+- ***To Delete an object***, click the ***Edit drawing button***, then put the mouse ***over an object***; when this object ***turns white***, press the ***Delete key*** to delete this object; 
+- ***To save drawing***, click the ***save button*** and use ***the default name*** to save the your drawing;
 
 **Step 4: Generate training, validation and test masks.** 
 - Click on ***"Get masks"*** under the ***Classification*** menu;
