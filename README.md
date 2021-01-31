@@ -39,7 +39,6 @@ Intelligent pixel-level image classification using deep neural networks.
 <!---* [Related Websites](related-website.md)--->
 # First example: Process Sentinel-1 SAR image for sea ice classification
 
-![](./pics/classify.gif)
 
 **Step 1: Edit config file.** 
 - Go to ***your_SIP_install_dir/config*** folder;
@@ -53,6 +52,8 @@ Intelligent pixel-level image classification using deep neural networks.
 - Click ***yes*** on the ***Label file*** dialogy, and open the default '.json' file;
 - You will see the SAR image with lines of different colors for the ***ice*** and ***water*** classes for respectively ***training***, ***validation*** and ***test*** sets; 
 - Pixels that fall on these lines will be used as training, validation and test samples;
+
+![](./pics/hv_draw.png)
 
 **Step 3: Draw training, validation and test samples for different classes.**  
 - ***Double click a class*** in the ***Label List*** panel on the right to choose a class; 
