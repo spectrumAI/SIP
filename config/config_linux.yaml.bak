@@ -237,7 +237,7 @@ rcm_slc_cp_params:
 raw_data_params:
     raw_img_dir: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/
     raw_img_type: tiff
-    is_geotiff: True
+    is_geotiff: False
     raw_id_str_range: #from 'start' to 'end' in the name of the raw image are the string that differenciate different scenes
         start: 26
         end: 71
@@ -370,7 +370,7 @@ data_params:
         overlap: 5
 
     patch_data_params: #patch input to CNN models with fully connected layers
-        patch_size: 7  # **
+        patch_size: 11  # **
 
         save_extracted_patches: False #whether the extracted patch samples will be saved
 
@@ -422,9 +422,9 @@ train_params:
         use_background_pixels: False
     
 train_result_params:
-    train_log_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_epoch10_lr0.0001_time20201104014025_train.log
-    model_file: ss_res_batchSize1000_bestEpoch5_lr0.0001_time20201104015737_weights.pkl
-    train_config_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss_res_batchSize1000_bestEpoch5_lr0.0001_time20201104015737__time20201104015737_train_config.yaml
+    train_log_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss-res-batchSize1000-epoch20-lr0.001-time20210130192941-train.log
+    model_file: ss-res-batchSize1000-lr0.001-time20210130192952-bestmodel.pth.tar
+    train_config_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss-res-batchSize1000-lr0.001-time20210130192952-bestmo-time20210130193110-train-config.yaml
 
 test_params:
     batch_size: 4 # batch size for test
@@ -473,8 +473,8 @@ predict_params:
         use_background_pixels: False
 
 predict_result_params:
-    predict_log_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/dip_res_batchSize1_epoch10_lr0.0001_time20201102205700_time20201102234111_predict.log
-    predict_config_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/dip_res_batchSize1_bestEpoch5_lr0.0001_time20201102205758_time20201102234111_predict_config.yaml
+    predict_log_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss-res-batchSize1000-epoch20-lr0.001-time20210130192941-time20210130193319-predict.log
+    predict_config_file: /home/l44xu/SIP/data/sentinel1_preprocessed_imgs/all_data/save/model/ss-res-batchSize1000-lr0.001-time20210130192952-bestmotime20210130193319-predict-config.yaml
 
  
 

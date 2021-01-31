@@ -42,35 +42,39 @@ Intelligent pixel-level image classification using deep neural networks.
 ![](./pics/classify.gif)
 
 **Step 1: Edit config file.** 
-- Copy the ***config_os.yaml.bak*** defined in the config folder and change its name to ***config_linux.yaml*** or ***config_win.yaml*** depending on your operational system;
-- Find ***raw_data_dir***, ***dirs***; ***For all directories in these three parameters, make sure you have changed them to your own directories***. Specifically, change all ***/my_dir/sentinel1_preprocessed_imgs/*** to ***/your_SIP_install_dir/data/sentinel1_preprocessed_imgs/***.
+- Go to ***your_SIP_install_dir/config*** folder;
+- Find ***config_linux.yaml.bak***; make a copy of it, and rename the copied file to ***config_linux.yaml***. Do the same to ***config_win.yaml.bak*** if you use Windows systems;
+- Open the ***config_os.yaml**** file. Find ***raw_img_dir*** under ***raw_data_params***, change its value to be ***/your_SIP_install_dir/data/sentinel1_preprocessed_imgs/***; 
+- Similarly, also change all directories under ***dirs*** (e.g., dirs->data-train, dirs-save-model, etc.) to your own directories;
 
 **Step 2: Run app and open data.** 
-- Run SIP;
+- Run SIP by typing ***python SIP.py*** in the ***your_SIP_install_dir***;
 - Open the 'multilook-4-s1a-ew-grd-20150915t180234-20150915t180338-007729-00abc9_hv-002.tiff' file in ***raw_img_dir*** folder defined in the ***config_os.yaml*** file;
 - Click ***yes*** on the ***Label file*** dialogy, and open the default '.json' file;
-- You will see images topped with lines of different colors for the ***ice*** and ***water*** class in respectively the ***training***, ***validation*** and ***test*** sets. 
+- You will see the SAR image with lines of different colors for the ***ice*** and ***water*** classes for respectively ***training***, ***validation*** and ***test*** sets; 
+- Pixels that fall on these lines will be used as training, validation and test purpose;
 
-**Step 2: Draw region of interst (ROI).**  
+**Step 3: Draw training, validation and test samples for different classes.**  
 - ***Double click a class*** in the 'Label List' panel on the right to choose a class; 
 - Draw point, or line or polygon to add more ROI for this class;
 - ***To finish drawing line and polygon, type 'c' from keyboard***;
-- Save drawing using default name;
+- Click ***save button*** and use default name to save the your drawing;
 
-**Step 4: Prepare label mask.** 
+**Step 4: Generate training, validation and test masks.** 
 - Click on ***"Get masks"*** under the ***Classification*** menu;
-- Select the ***config_os.yaml*** file you just edited, and then select the ***default csv file*** you just saved;
+- Select the ***config_os.yaml*** file you edited in ***your_SIP_install_dir/config/***, and then select the ***default csv file*** under the ***your_SIP_install_dir/data/***;
 - This step transfer ROIs from vectors to mask images;
-- Take a look at the png images generated in the ***raw_img_dir*** directory defined in the config file;
+- Take a look at the png images generated in the ***raw_img_dir*** directory defined in ***config_os.yaml***;
 
 **Step 5: Prepare all dirs and data.** 
-- Click on ***"Prepare data"*** under the ***Classification*** menu to prepare all training, test and prediction data. 
+- Click on ***"Prepare data"*** under the ***Classification*** menu to prepare all training, validation, test and prediction data. 
 - You need to choose the ***config_os.yaml*** file. 
-- Once finished, go to ***dirs->data->train/val/test/predict*** folders defined in the config file, to open and take a look at the ***data_file.yaml*** files. Think about why ***dirs->data/predict*** has different image with train, val and test.   
+- Once finished, go to ***dirs->data->train/val/test/predict*** folders defined in ***config_os.yaml***, to open and take a look at the ***data_file.yaml*** files. Think about why ***dirs->data/predict*** has different image with train, val and test.   
+- In ***raw_img_dir*** folder, the images (i.e., multilook-4-s1a-ew-grd-20150917t174608-20150917t174713-007758-00ac93_hv-002.tiff and the hh image) on which you did not draw any training, validation, or test samples will be automatically used for prediction;
 
 **Step 6: Train classifier.** 
-- Click on ***'Train classifier'*** under the ***Classification*** menu and then choose the ***config_os.yaml*** file. 
-- Once training is finished, go to ***raw_data_dir*** defined in ***config_os.yaml***  to take a look at the generated label maps of the training images. 
+- Click on ***Train classifier*** under the ***Classification*** menu and then choose the ***config_os.yaml*** file. 
+- Once training is finished, go to ***raw_img_dir*** defined in ***config_os.yaml***  to take a look at the generated label maps of the training images. 
 - Go to ***dirs->save->model*** folder defined in ***config_os.yaml***, check ***the training and validation accuracies*** in the ***modelName-trainTime-train.log*** file.
 
 **Step 7: Test classifier.** 
