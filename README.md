@@ -77,6 +77,8 @@ Intelligent pixel-level image classification using deep neural networks.
 - Once training is finished, go to ***raw_img_dir*** defined in ***config_os.yaml***  to take a look at the generated label maps of the training images. It then generates a label map for the whole image. 
 - Go to ***dirs->save->model*** folder defined in ***config_os.yaml***, check ***the training and validation accuracies*** in the ***modelName-trainTime-train.log*** file.
 
+![](./pics/train_3.png)
+
 **Step 7: Test classifier.** 
 - You can optionally run ***"Test classifier"*** under ***Classification***. Select the ***config_os.yaml*** file.
 - It will calculate ***test accuracies*** using the ***test samples*** defined in the ***.json*** file.
@@ -87,3 +89,4 @@ Intelligent pixel-level image classification using deep neural networks.
 - Once it is done, you can check the label map of the test image in the ***raw_img_dir*** folder.
 - Check the "modelName-testTime-predict.log" file under the ***dirs->save->model*** folder defined in ***config_os.yaml***. 
 
+![](./pics/predict_3.png)
