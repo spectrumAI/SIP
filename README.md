@@ -52,19 +52,19 @@ Intelligent pixel-level image classification using deep neural networks.
 - Open the 'multilook-4-s1a-ew-grd-20150915t180234-20150915t180338-007729-00abc9_hv-002.tiff' file in ***raw_img_dir*** folder defined in the ***config_os.yaml*** file;
 - Click ***yes*** on the ***Label file*** dialogy, and open the default '.json' file;
 - You will see the SAR image with lines of different colors for the ***ice*** and ***water*** classes for respectively ***training***, ***validation*** and ***test*** sets; 
-- Pixels that fall on these lines will be used as training, validation and test purpose;
+- Pixels that fall on these lines will be used as training, validation and test samples;
 
 **Step 3: Draw training, validation and test samples for different classes.**  
-- ***Double click a class*** in the 'Label List' panel on the right to choose a class; 
-- Draw point, or line or polygon to add more ROI for this class;
+- ***Double click a class*** in the ***Label List*** panel on the right to choose a class; 
+- Draw ***point, or line or polygon*** to add more samples for this class;
 - ***To finish drawing line and polygon, type 'c' from keyboard***;
-- Click ***save button*** and use default name to save the your drawing;
+- Click ***save button*** and use ***the default name*** to save the your drawing;
 
 **Step 4: Generate training, validation and test masks.** 
 - Click on ***"Get masks"*** under the ***Classification*** menu;
-- Select the ***config_os.yaml*** file you edited in ***your_SIP_install_dir/config/***, and then select the ***default csv file*** under the ***your_SIP_install_dir/data/***;
+- Select the ***config_os.yaml*** file you edited in ***your_SIP_install_dir/config/*** folder, and then select the ***default csv file*** under the ***your_SIP_install_dir/data/*** folder;
 - This step transfer ROIs from vectors to mask images;
-- Take a look at the png images generated in the ***raw_img_dir*** directory defined in ***config_os.yaml***;
+- Take a look at the ***png images*** generated in the ***raw_img_dir*** directory defined in ***config_os.yaml***;
 
 **Step 5: Prepare all dirs and data.** 
 - Click on ***"Prepare data"*** under the ***Classification*** menu to prepare all training, validation, test and prediction data. 
@@ -74,12 +74,12 @@ Intelligent pixel-level image classification using deep neural networks.
 
 **Step 6: Train classifier.** 
 - Click on ***Train classifier*** under the ***Classification*** menu and then choose the ***config_os.yaml*** file. 
-- Once training is finished, go to ***raw_img_dir*** defined in ***config_os.yaml***  to take a look at the generated label maps of the training images. 
+- Once training is finished, go to ***raw_img_dir*** defined in ***config_os.yaml***  to take a look at the generated label maps of the training images. It then generates a label map for the whole image. 
 - Go to ***dirs->save->model*** folder defined in ***config_os.yaml***, check ***the training and validation accuracies*** in the ***modelName-trainTime-train.log*** file.
 
 **Step 7: Test classifier.** 
-- You can optionally run ***"Test classifier"*** under ***Classification***. Select the ***config_os.yaml*** file. 
-- It will predict the image and calculate test accuracy using the ***test samples*** defined in the ***.json*** file. 
+- You can optionally run ***"Test classifier"*** under ***Classification***. Select the ***config_os.yaml*** file.
+- It will calculate ***test accuracies*** using the ***test samples*** defined in the ***.json*** file.
 - Check the ***test accuracies*** in the "modelName-testTime-test.log" file under the ***dirs->save->model*** folder defined in ***config_os.yaml***.  
 
 **Step 8: Predict label map on a new image.** 
