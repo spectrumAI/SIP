@@ -126,7 +126,7 @@ sentinel1_params:
 
 Modis_params:
     
-    Modis_hdf_dir: C:\Users\l44xu\SIP\MOD13Q1_raw_hdf
+    Modis_hdf_dir: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf
     raw_Modis_format: hdf
     Modis_data_type: MOD13Q1 #MOD02QKM #MCD12Q1 #MOD09QA MCD64A1
 
@@ -141,8 +141,8 @@ Modis_params:
 
     Modis_hdf_to_tiff_params:
         to_tiff_Modis: True
-        input_dir_tiff_Modis: C:\Users\l44xu\SIP\MOD13Q1_raw_hdf\
-        output_dir_tiff_Modis: C:\Users\l44xu\SIP\MOD13Q1_raw_hdf\tiff\
+        input_dir_tiff_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf\
+        output_dir_tiff_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf\tiff\
         multilook_num: 1
         low_percentage_to_remove: 0.0
         high_percentage_to_remove: 0.0
@@ -154,14 +154,14 @@ Modis_params:
 
     Modis_mosaic_params:
         to_mosaic_Modis: True
-        input_dir_mosaic_Modis: C:\Users\l44xu\SIP\MOD13Q1_raw_hdf\tiff\
-        output_dir_mosaic_Modis: C:\Users\l44xu\SIP\MOD13Q1_raw_hdf\mosaic\
+        input_dir_mosaic_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf\tiff\
+        output_dir_mosaic_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf\mosaic\
         Modis_merge_days: 1
 
     Modis_reprojection_params:
         to_reproject_Modis: True
-        input_dir_reproject_Modis: C:\Users\l44xu\SIP\MOD13Q1_raw_hdf\mosaic\
-        output_dir_reproject_Modis: C:\Users\l44xu\SIP\MOD13Q1_raw_hdf\reprojection\
+        input_dir_reproject_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf\mosaic\
+        output_dir_reproject_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf\reprojection\
         Modis_reprojection_destination_wkt_file: C:\Users\l44xu\SIP\data\wgs84_lambert_azimuthal_equal_area_wkt.txt
         # if None, use default WGS_1984_Lambert_Azimuthal_Equal_Area
         Modis_resampling_method: nearest_neighbor
@@ -169,8 +169,8 @@ Modis_params:
 
     Modis_clip_params:
         to_clip_Modis: True
-        input_dir_clip_Modis: C:\Users\l44xu\SIP\MOD13Q1_raw_hdf\reprojection\
-        output_dir_clip_Modis: C:\Users\l44xu\SIP\MOD13Q1_raw_hdf\clip\
+        input_dir_clip_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf\reprojection\
+        output_dir_clip_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf\clip\
         bounding_box_shp_file: C:\Users\l44xu\SIP\data\canada_lc_classification\clipper.shp
         bounding_box_geotiff_file: C:\Users\l44xu\SIP\data\canada_lc_classification\label_canada_250m.tif
         bounding_box_mask_file: C:\Users\l44xu\SIP\data\canada_lc_classification\canada_mask.tiff
@@ -182,7 +182,7 @@ Modis_params:
     
     Modis_generate_small_blocks_params:
         to_generate_small_blocks_Modis: True
-        input_dir_small_blocks_Modis: C:\Users\l44xu\SIP\MOD13Q1_raw_hdf\clip\
+        input_dir_small_blocks_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf\clip\
         output_dir_small_blocks_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_preprocessed_imgs\
         block_height_Modis: 256
         block_width_Modis: 256
@@ -195,6 +195,20 @@ Modis_params:
         to_use_label_map_in_mask_blocks: True
         Modis_label_map_file: C:\Users\l44xu\SIP\data\canada_lc_classification\label_canada_250m.tif
 
+        to_remove_blocks_dominated_by_background_pixels_Modis: True
+        to_remove_blocks_with_limited_training_pixels_Modis: True
+        training_sample_thrd_Modis: 1000
+        to_generate_random_val_samples_Modis: True
+        random_val_sample_rate_Modis: 0.1
+
+    Modis_maps_merge_params:
+        to_merge_classification_maps_Modis: True
+        input_dir_maps_merge_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_mosaic_maps\
+        output_dir_maps_merge_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_mosaic_maps\
+        maps_merge_Modis_id_str: 
+            - '*predict-map*geocoded-merged.tiff'
+
+ 
     Modis_space_saving_params:
         to_delete_output_tiff_files: True
         to_delete_output_mosaic_files: True
