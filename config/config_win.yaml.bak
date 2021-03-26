@@ -138,7 +138,33 @@ Modis_params:
         #Modis_url: https:\\ladsweb.modaps.eosdis.nasa.gov\archive\orders\501459792\
         #Modis_url: https:\\ladsweb.modaps.eosdis.nasa.gov\archive\orders\501461229\
         Modis_url: https:\\ladsweb.modaps.eosdis.nasa.gov\archive\orders\501463081\
-
+    Modis_dates_list_to_be_processed_params:
+        to_process_each_date_separately_Modis: True
+        dates_list_to_be_processed_Modis:
+            - 2015177
+            - 2015017
+            - 2015033
+            - 2015049
+            - 2015065
+            - 2015081
+            - 2015097
+            - 2015113
+            - 2015129
+            - 2015145
+            - 2015161
+            - 2015001
+            - 2015193
+            - 2015209
+            - 2015225
+            - 2015241
+            - 2015257
+            - 2015273
+            - 2015289
+            - 2015305
+            - 2015321
+            - 2015337
+            - 2015353
+ 
     Modis_hdf_to_tiff_params:
         to_tiff_Modis: True
         input_dir_tiff_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_raw_hdf\
@@ -206,7 +232,7 @@ Modis_params:
         input_dir_maps_merge_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_mosaic_maps\
         output_dir_maps_merge_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_mosaic_maps\
         maps_merge_Modis_id_str: 
-            - '*predict-map*geocoded-merged.tiff'
+            - '*predict-map*geocoded.tiff'
 
  
     Modis_space_saving_params:
@@ -345,10 +371,34 @@ classification_map_params:
     to_use_colors_and_classes_in_geotiff: False
  
     class_color_config_params:
+        is_colors_defined_in_rgb_values: True
+ 
         my_colors:
-            - white # color of the background, e.g., land area in sea ice classification
-            - yellow # color of the first class
-            - green
+            - '0_0_0'
+            - '0_61_0'
+            - '148_156_112'
+            - '0_99_0'
+            - '30_171_5'
+            - '20_140_61'
+            - '92_117_43'
+            - '179_158_43'
+            - '179_138_51'
+            - '232_220_94'
+            - '225_207_138'
+            - '156_117_84'
+            - '186_212_143'
+            - '64_138_112'
+            - '107_163_138'
+            - '230_174_102'
+            - '168_171_174'
+            - '220_33_38'
+            - '76_112_163'
+            - '255_250_255'
+ 
+        #my_colors:
+        #    - white # color of the background, e.g., land area in sea ice classification
+        #    - yellow # color of the first class
+        #    - green
             #- red
             #- pink
             #- orange
@@ -356,13 +406,34 @@ classification_map_params:
         my_classes: # the class names you defined here have to be consistent with the class names appeared in GUI
                     # e.g., in GUI, if you have land_train, land_val, land_test, water_train, water_val, water_test, 
                     # then, here you need to have two classes, i.e., land and water. 
-            - background # 0, background mask has to end with 'background_mask.xxx' 
-            - ice # 1, the first class name
-            - water # 2, the second class name
+            #- background # 0, background mask has to end with 'background_mask.xxx' 
+            #- ice # 1, the first class name
+            #- water # 2, the second class name
             #- young # 3
             #- grey # 4
             #- new # 5
             #- water # 6
+            - background # 0, background mask has to end with 'background_mask.xxx' 
+            - class1 #ice # 1, the first class name
+            - class2 #water # 2, the second class name
+            - class3 #young # 3
+            - class4 #grey # 4
+            - class5 #new # 5
+            - class6 #water # 6
+            - class7
+            - class8
+            - class9
+            - class10
+            - class11
+            - class12
+            - class13
+            - class14
+            - class15
+            - class16
+            - class17
+            - class18
+            - class19
+
 
     #define the indicator of the background class whose class identity is unknown
     #the color of the background class is defined as the first color in 'my_colors'
