@@ -177,12 +177,16 @@ Modis_params:
             to_use_cut_values: False
             min_value_cut_Modis: -0.0071
             max_value_cut_Modis: 0.795
+        to_skip_if_result_files_exist_totiff_Modis: True
+
 
     Modis_mosaic_params:
         to_mosaic_Modis: True
         input_dir_mosaic_Modis: /home/l44xu/SIP/data/MOD13Q1_raw_hdf/tiff/
         output_dir_mosaic_Modis: /home/l44xu/SIP/data/MOD13Q1_raw_hdf/mosaic/
         Modis_merge_days: 1
+        to_skip_if_result_files_exist_mosaic_Modis: True
+
 
     Modis_reprojection_params:
         to_reproject_Modis: True
@@ -192,6 +196,8 @@ Modis_params:
         # if None, use default WGS_1984_Lambert_Azimuthal_Equal_Area
         Modis_resampling_method: nearest_neighbor
         Modis_output_resolution: 250
+        to_skip_if_result_files_exist_reprojection_Modis: True
+
 
     Modis_clip_params:
         to_clip_Modis: True
@@ -200,12 +206,16 @@ Modis_params:
         bounding_box_shp_file: /home/l44xu/SIP/data/canada_lc_classification/clipper.shp
         bounding_box_geotiff_file: /home/l44xu/SIP/data/canada_lc_classification/label_canada_250m.tif
         bounding_box_mask_file: /home/l44xu/SIP/data/canada_lc_classification/canada_mask.tiff
+        to_skip_if_result_files_exist_clip_Modis: True
+
 
     Modis_extract_bands_params:
         to_extract_bands_Modis: False
         input_dir_extract_bands_Modis: /home/l44xu/SIP/data/MOD13Q1_raw_hdf/clip/
         output_dir_extract_bands_Modis: /home/l44xu/SIP/data/MOD13Q1_raw_hdf/extract/
+        to_skip_if_result_files_exist_extract_bands_Modis: True
     
+   
     Modis_generate_small_blocks_params:
         to_generate_small_blocks_Modis: True
         input_dir_small_blocks_Modis: /home/l44xu/SIP/data/MOD13Q1_raw_hdf/clip/
@@ -220,7 +230,11 @@ Modis_params:
         to_combine_data_into_time_series: True
         to_use_label_map_in_mask_blocks: True
         Modis_label_map_file: /home/l44xu/SIP/data/canada_lc_classification/label_canada_250m.tif
+        to_skip_if_result_files_exist_generate_small_blocks_Modis: True
 
+    Modis_post_process_small_blocks_params:
+        to_post_process_small_blocks_Modis: False # if here is false, no any post processing
+ 
         to_remove_blocks_dominated_by_background_pixels_Modis: True
         to_remove_blocks_with_limited_training_pixels_Modis: True
         training_sample_thrd_Modis: 1000
@@ -481,6 +495,7 @@ train_params:
     prop_train: 1 #0.01 # if 0.1, then 10% of all train samples are used in each epoch
     var: 0 # std of noise added to input when using images as input 
     net_type: ss-res
+    print_train_iter_inter: 5
  
     to_resume_from_latest_checkpoint: False
     resume_checkpoint_file: dip-res-batchSize16-lr0.01-time20201113143717-checkpoint.pth.tar 
