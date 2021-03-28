@@ -14,7 +14,7 @@
 **Step 3: Run app and preprocess Landsat-8 raw data** 
 - Copy all downloaded .tar.gz files to the SIP/data/landsat8_raw_zip/ folder;
 - Copy the ***config_os.yaml.bak*** in the config folder and change its name to ***config_os.yaml***;
-- Edit ***config_os.yaml*** to ensure all parameters are setted correctly. See [config file](config_file.md) for instructions. Here, you may want to set ***multilook_number: 4*** to reduce the size of the image, make sure ***to_use_cut_values*** is True to use the default cut values for increasing image contrast with better visualization;
+- Edit ***config_os.yaml*** to ensure all parameters are setted correctly. <!--See [config file](config_file.md) for instructions.--> Here, you may want to set ***multilook_number: 4*** to reduce the size of the image, make sure ***to_use_cut_values*** is True to use the default cut values for increasing image contrast with better visualization;
 - Run SIP, and click on ***"preprocessing -> Landsat"***;
 - First select the /data/landsat8_raw_zip/ folder, and then ***select the config_os.yaml file*** you just edited. 
 - Once finished, take a look at the preprocessed scenes in /data/landsat8_preprocessed_imgs/ folder;
@@ -54,27 +54,48 @@
 **Setp 9: Draw burn_test and unburn_test samples for LC08_L1TP_229071_20191010_20191018_01_T1**
 - Do the same for LC08_L1TP_229071_20191010_20191018_01_T1, as you did in Setp 8. 
 
-**Step 10: Prepare label mask.** 
+**Step 10: Prepare label mask.**
+- Open ***config_os.yaml***, and make sure ***num_classes*** equals 2, ***my_classes*** consists of ***background***, ***burn*** and ***unburn***, and ***my_colors*** consists of ***white***, ***yellow*** and ***green***.  
 - Click on ***"prepare label mask"*** under ***classification*** menu;
 - First select the config file you just edited, and then select the two csv files you just saved for the two scenes;
 - This step transfer ROIs from vectors to mask images;
-- Take a look at the png images generated in the "Image List" panel on the left;
+- Take a look at the png images generated in the ***raw_img_dir*** folder defined in ***config_os.yaml***;
 
 **Step 11: Prepare all dirs and data** 
 - Click on ***"prepare all dirs and data"*** under ***classification*** menu to prepare all training, test and prediction data. 
 - You need to choose the config_os.yaml file you just edited. 
-- under the ***data -> train*** folder defined in ***config_os.yaml*** file, you should see ***a .yaml file***, which defines the use of LC08_L1TP_001069_20191013_20191018_01_T1 and LC08_L1TP_001069_20191013_20191018_01_T1 for training. And under the ***data -> test*** folder defined in ***config_os.yaml*** file, you should see ***a yaml file*** that specifies the use of the other two scenes for testing. 
+- under the ***data -> train*** folder defined in ***config_os.yaml*** file, you should see ***data_file.yaml***, which defines the use of LC08_L1TP_001069_20191013_20191018_01_T1 and LC08_L1TP_001069_20191013_20191018_01_T1 for training. And under the ***data -> test*** folder defined in ***config_os.yaml*** file, you should see ***data_file.yaml*** that specifies the use of the other two scenes for testing. 
 
 **Step 12: Train classifier on LC08_L1TP_001069_20191013_20191018_01_T1 and LC08_L1TP_001069_20191013_20191018_01_T1** 
 - Make sure your set ***net_type: ss_res*** in the config file. 
 - Click on ***'train classifier'*** under ***classification*** menu and then choose the config_os.yaml you just edited. 
-- Once training is finished, you can see the generated label map by clicking on this file in the 'Image List' panel on the left. 
+- Once training is finished, you can see the generated label map in the ***dirs -> save -> train*** folder defined in ***config_os.yaml***. 
 - Check ***the training and validation accuracies*** in the "train_log" file under the "save -> model" folder specified in the config_os.yaml file you edited. 
 
 **Step 13: Test the classifier on the other two scenes** 
 - Click on ***"Test classifier"*** to test the trained model on the other scene in the folder.
-- Once it is done, you can also check the label map in the "Image List" panel, and also in the ***all_data -> save -> test*** folder. You also need to select the same config_os.yaml file.
+- Once it is done, you can also check the label map in the "Image List" panel, and also in the ***dirs -> save -> test*** folder. You also need to select the same config_os.yaml file.
 - Check the "test_log" file under the "save_model" folder specified in the config_os.yaml file to see the ***test accuracies*** on these two scenes.  
+
+## Compare ss_res performance using different rgb combinations
+
+**Step 1: train ss_res using rgb753**
+- Open the ***"config_os.yaml"*** file in the 'config' folder
+- Make sure you set ***raw_band_names*** to consist of ***'*rgb753.tiff'***
+- Repeat steps 12 and 13 in previous section to obtain 4 maps (2 for training scenes and 2 for test scenes), and also the training and test accuracies. 
+
+**Step 2: train ss_res using rgb432**
+- Open the ***"config_os.yaml"*** file in the 'config' folder
+- Make sure you set ***raw_band_names*** to only consist of ***'*rgb432.tiff'***
+- Repeat steps 12 and 13 in previous section to obtain 4 maps (2 for training scenes and 2 for test scenes), and also the training and test accuracies. 
+- Compare the 4 maps and accuracies with the results achieved using rgb753.
+
+**Step 2: train ss_res using other bands or rgb images**
+- Open the ***"config_os.yaml"*** file in the 'config' folder
+- Make sure you set ***raw_band_names*** to consist of other bands or rgb images (you can use more than one bands or rgb images).
+- Repeat steps 12 and 13 in previous section to obtain 4 maps (2 for training scenes and 2 for test scenes), and also the training and test accuracies. 
+- Compare the 4 maps and accuracies with previous results to see using which bands or rgb images give you the "best" results.
+
 
 ## Compare different classifiers
 
@@ -86,13 +107,12 @@
  
 
 **Step 2: prepare data, train rf and predict**
-- Go to step 9 in the above to start from there; 
+- Go to step 12 in the above to start from there; 
 - Once all steps are finised, please compare the four classification maps (two train, two predict) achieved by ***rf*** with the four maps achieved by ***ss_res***;
 
-**Step 3: do the same for spectral_res, svm and knn classifiers**
+**Step 3: do the same for svm and knn classifiers**
 - go over step 1 and step 2, but replace rf with svm and knn;
 - compare the classification maps, train accuracy and val accuracy of all four methods (i.e., ss_res, knn, rf, svm);
-- the comparison between spectral_res and spatial-spectral res, i.e., ss_res, may highlight the role of spatial coherence; 
 
 ## Compare classifier performance using different number of training samples
 
@@ -109,4 +129,5 @@
 **Step 3: do the same for svm, knn, and res_ss**
 - go over step 1 and step 2, but replace rf with the other classifiers;
 - once finished, each classifier 4 test and validation accuracies and 4 maps; compare these results;
+
 
