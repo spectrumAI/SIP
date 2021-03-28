@@ -1,4 +1,4 @@
-# Band selection from Landsat-8 images using DCNN
+# Burned area classification from Landsat-8 images using DCNN
 
 **Step 1: Download Landsat-8 wildfire images**
 - Go to USGS EarthExplorer (https://earthexplorer.usgs.gov/);
@@ -90,7 +90,7 @@
 - Repeat steps 12 and 13 in previous section to obtain 4 maps (2 for training scenes and 2 for test scenes), and also the training and test accuracies. 
 - Compare the 4 maps and accuracies with the results achieved using rgb753.
 
-**Step 2: train ss_res using other bands or rgb images**
+**Step 3: train ss_res using other bands or rgb images**
 - Open the ***"config_os.yaml"*** file in the 'config' folder
 - Make sure you set ***raw_band_names*** to consist of other bands or rgb images (you can use more than one bands or rgb images).
 - Repeat steps 12 and 13 in previous section to obtain 4 maps (2 for training scenes and 2 for test scenes), and also the training and test accuracies. 
