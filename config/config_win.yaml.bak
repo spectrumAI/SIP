@@ -201,6 +201,8 @@ Modis_params:
         to_clip_Modis: False
         input_dir_clip_Modis: \media\l44xu\hulk\SIP\data\landsat8_raw_hdf\reprojection\
         output_dir_clip_Modis: \media\l44xu\hulk\SIP\data\landsat8_raw_hdf\clip\
+        clip_Modis_id_str:
+            - '*_merged_reprojected_clipped.tiff'
         bounding_box_shp_file: \media\l44xu\hulk\SIP\data\canada_lc_classification\clipper.shp
         bounding_box_geotiff_file: \media\l44xu\hulk\SIP\data\canada_lc_classification\label_canada_250m.tif
         bounding_box_mask_file: \media\l44xu\hulk\SIP\data\canada_lc_classification\canada_mask.tiff
@@ -210,12 +212,16 @@ Modis_params:
         to_extract_bands_Modis: False
         input_dir_extract_bands_Modis: \media\l44xu\hulk\SIP\data\landsat8_raw_hdf\clip\
         output_dir_extract_bands_Modis: \media\l44xu\hulk\SIP\data\landsat8_raw_hdf\extract\
+        extract_bands_Modis_id_str:
+            - '*-merged-reprojected-clipped.tiff'
         to_skip_if_result_files_exist_extract_bands_Modis: True
     
     Modis_generate_small_blocks_params:
         to_generate_small_blocks_Modis: False
         input_dir_small_blocks_Modis: \media\l44xu\hulk\SIP\data\landsat8_raw_hdf\clip\
         output_dir_small_blocks_Modis: \media\l44xu\hulk\SIP\data\landsat8_preprocessed_imgs\
+        generate_small_blocks_Modis_id_str:
+            - '*_clipped-clipped.tiff'
         block_height_Modis: 256
         block_width_Modis: 256
         block_height_overlap: 20
@@ -235,7 +241,7 @@ Modis_params:
         to_remove_blocks_with_limited_training_pixels_Modis: True
         training_sample_thrd_Modis: 1000
         to_generate_random_val_samples_Modis: True
-        random_val_sample_rate_Modis: 0.1
+        random_val_sample_rate_Modis: 0
         
     Modis_maps_merge_params:
         to_merge_classification_maps_Modis: True
