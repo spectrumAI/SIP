@@ -16,6 +16,8 @@
  
 * ***Experiment 2: Train dip-res model using the time series blocks***
 
-    1. Open ***config_os.yaml*** and ensure that ***raw_img_dir*** points to the folder with preprocessed time series blocks, ***raw_band_names*** consists of ***'*all-channels.tiff'***, ***dirs -> data/mask/save*** are set using your own directories, ***num_classes*** equals 19, ***is_colors_defined_in_rgb_values*** is True, and ***my_colors*** consists of 20 colors of rgb values, and ***my_classes*** consists of 20 class names. 
-    1. In ***config_os.yaml***, under ***train_params***, ***lr*** equals 0.0001, ***batch_size_train/val/test/predict*** equals 2, ***net_type*** is dip-res.  
+    1. Open ***config_os.yaml*** and ensure that ***raw_img_dir*** points to the folder with preprocessed time series blocks, ***raw_band_names*** consists of '*all-channels.tiff', ***dirs -> data/mask/save*** are set using your own directories, ***num_classes*** equals 19, ***is_colors_defined_in_rgb_values*** is True, and ***my_colors*** consists of 20 colors of rgb values, and ***my_classes*** consists of 20 class names. 
+    1. In ***config_os.yaml***, under ***train_params***, ***lr*** equals 0.0001, ***batch_size_train/val/test/predict*** equals 2, ***net_type*** is dip-res. 
+    1. Save ***config_os.yaml***.
+    1. Run SIP, click on ***Train classifier*** under ***Classification***, choose the ***config_os.yaml*** you edited.  
 
