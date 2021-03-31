@@ -66,7 +66,6 @@
     1. In ***config_os.yaml***, under ***Modis_params***, disable all the other preprocessing steps by setting ***to_XXXX_Modis*** to be ***False***.
     1. Run SIP, click on ***Preprocessing -> Modis*** to mosaic the classification maps. Once finished, go to ***output_dir_maps_merge_Modis*** defined in ***config_os.yaml*** to take a look at the mosaiced map. Open it in QGIS and compare it with the true map of Alberta. 
 
-![](./pics/alta_true_predict.png)
    
 ## Experiment 2: Train dip-res on Saskatchewan and test on Alberta using NDVI time series
 
