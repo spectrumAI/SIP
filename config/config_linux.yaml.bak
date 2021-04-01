@@ -233,6 +233,8 @@ Modis_params:
 
         to_use_label_map_in_mask_blocks: True
         Modis_label_map_file: /media/l44xu/hulk/SIP/data/canada_lc_classification/label_canada_250m.tif
+        to_output_color_table_in_geotiff_Modis: True
+        output_dir_color_table_in_geotiff_Modis: /home/l44xu/SIP/data/MOD13Q1_preprocessed_imgs_sask_evi3/
         to_skip_if_result_files_exist_generate_small_blocks_Modis: True
 
     Modis_post_process_small_blocks_params:
@@ -388,6 +390,8 @@ classification_map_params:
  
     class_color_config_params:
         is_colors_defined_in_rgb_values: False
+        color_of_unknown_class: 255_255_255
+
         my_colors:
             #- '0_0_0'
             #- '0_61_0'
