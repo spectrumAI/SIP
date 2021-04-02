@@ -443,6 +443,24 @@ classification_map_params:
             #- class17
             #- class18
             #- class19
+    to_use_class_proportions_as_inverse_weights_train: False 
+    my_class_proportions:
+        - 1 #0.2 #Temperate or sub-polor needleleaf forest
+        - 1.65
+        - 6.5
+        - 1.79
+        - 6.27
+        - 9.96
+        - 1 #0.0005 #Sub-polar or polar shrubland-lichen-moss
+        - 1 #0.1
+        - 1 #0.00005 #Sub-polar or polar barren-lichen-moss
+        - 5.18
+        - 33.98
+        - 2.96
+        - 1 #0.82
+        - 11.3
+        - 1 #0.000004 #snow and ice 
+
 
     #define the indicator of the background class whose class identity is unknown
     #the color of the background class is defined as the first color in 'my_colors'

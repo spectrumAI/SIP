@@ -25,7 +25,7 @@
     1. Assume that the final train blocks are saved into ***MOD13Q1_preprocessed_imgs_alta_evi***
 
 * **Prepare data for Saskatchewan**
-    1. Open ***config_os.yaml*** and ensure that ***raw_img_dir*** points to the folder with preprocessed time series blocks, i.e., ***MOD13Q1_preprocessed_imgs_sask_evi***, ***raw_band_names*** consists of '\*all-channels.tiff', ***dirs -> data/mask/save*** are set using your own directories, ***num_classes*** equals 19, ***is_colors_defined_in_rgb_values*** is True, and ***my_colors*** consists of 20 colors of rgb values, and ***my_classes*** consists of 20 class names. 
+    1. Open ***config_os.yaml*** and ensure that ***raw_img_dir*** points to the folder with preprocessed time series blocks, i.e., ***MOD13Q1_preprocessed_imgs_sask_evi***, ***raw_band_names*** consists of '\*all-channels.tiff', ***dirs -> data/mask/save*** are set using your own directories, ***num_classes*** equals 15, ***is_colors_defined_in_rgb_values*** is True, and ***my_colors*** consists of 16 colors of rgb values, and ***my_classes*** consists of 16 class names. Out of the 19 classes, Class3, Class4, Class7 and Class9 should not be used.  
     1. Open ***config_os.yaml***, under ***random_split_samples_params***, set ***to_random_split_samples*** and ***to_split_on_image_level*** to be ***True***. Set ***train_proportion*** to be ***0.8***, ***val_proportion*** to be ***0.2***, and ***test_proportion*** to be ***0***.
     1. Run SIP, and click on ***Classification -> Prepare data***. Once finished, go to ***dirs -> data -> train*** defined in the config file and open ***data-file.yaml*** to take a look at the training block list. 
  
