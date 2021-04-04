@@ -233,6 +233,13 @@ Modis_params:
 
         to_use_label_map_in_mask_blocks: True
         Modis_label_map_file: \media\l44xu\hulk\SIP\data\canada_lc_classification\label_canada_250m.tif
+        class_ids_in_label_map_to_use: 0_1_2_5_6_8_10_11_12_13_14_15_16_17_18_19
+
+        Modis_label_map_sampling_params:
+            to_enable_label_map_sampling_Modis: False
+            window_size_for_class_spatial_density: 13
+            threshold_number_pixels_in_window: 100
+ 
         to_output_color_table_in_geotiff_Modis: True
         output_dir_color_table_in_geotiff_Modis: C:\Users\l44xu\SIP\data\MOD13Q1_preprocessed_imgs_sask_evi3\
         to_skip_if_result_files_exist_generate_small_blocks_Modis: True
@@ -443,6 +450,10 @@ classification_map_params:
             #- class17
             #- class18
             #- class19
+            - Water
+            - Snow and ice
+            - Unknown
+ 
     to_use_class_proportions_as_inverse_weights_train: False 
     my_class_proportions:
         - 1 #0.2 #Temperate or sub-polor needleleaf forest
@@ -675,7 +686,7 @@ net_params:
 
     dip-res: 
         channels: 20
-        blocks: 40
+        blocks: 10
         act_fun: LeakyReLU  # LeakyRELU ReLU ...
         pad: reflection  # reflection zero ...
     
