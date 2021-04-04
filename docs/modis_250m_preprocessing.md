@@ -71,12 +71,29 @@
     1. Run SIP software and click on ***Preprocessing -> Modis*** to conduct clipping and small blocks processing. 
     1. Once it finished, go to the ***MOD13Q1_preprocessed_imgs_saskatchewan*** folder to take a look at the generated images and open them in QGIS to make sure they have been geocoded correctly.
 
-## Experiment 5: Generate 250m Reflectance channels for the Saskatchewan proviince in Canada
+## Experiment 5: Generate 250m Reflectance channels for the Saskatchewan province in Canada
 
 * **Repeat Experiment 4, but use different channel**
     1. Repeat Experiment 4. But, change ***used_bands_indices*** to be 2, 3, 4, 5, for respectively the red, near infrared, blue and medium infrared channels. And, change ***output_dir_small_blocks_Modis***.  
     1. Instead of just using one reflectance channel, you can use multiple channels by setting ***used_bands_indices*** to consists of more than one values. In this case, the final time series will consist of the time series of multiple channels. 
 
  
+## Experiment 6: Instead of using all pixels as training samples, generate high confidence training samples for Saskatchewan province in Canada
+
+* **Repeat Experiment 2, but set to select high confidence samples**
+    1. Repeat all steps in Experiment 2. The only difference is that make sure you use ***to_enable_label_map_sampling_Modis*** to be ***True***, and set ***window_size_for_class_spatial_density*** to be ***13*** and ***threshold_number_pixels_in_window*** to be ***100***. In this case, within a 13-by-13 image patch, if there are at least 100 pixels have the same class id with the center pixel, then the center pixel will be used for training. Using this option can therefore reduce some noisy areas where different pixels tend to have different class labels. It can help to select pixels that are within a class region. 
+
+    1. Once it finished, go to the ***MOD13Q1_preprocessed_imgs_saskatchewan*** folder to take a look at the generated images and open them in QGIS to make sure they have been geocoded correctly. The generated masks should have sparse labels. 
+
+## Experiment 7: Instead of using all pixels as training samples, generate high confidence training samples for Alberta province in Canada
+
+* **Repeat Experiment 6, but use the Alberta data**
+    1. Repeat all steps in Experiment 2.  The only difference is that make sure you use ***clipper_alta.shp***, ***label_canada_250m_alta.tif*** and ***canada_mask_alta.tiff*** to reset ***bounding_box_XXX*** and ***Modis_label_map_file*** parameters in ***config_os.yaml***. 
+ 
+    1. Once it finished, go to the ***MOD13Q1_preprocessed_imgs_alberta*** folder to take a look at the generated images and open them in QGIS to make sure they have been geocoded correctly. The generated masks should have sparse labels. 
+
+
+
+
 
  

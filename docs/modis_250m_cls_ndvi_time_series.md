@@ -93,6 +93,21 @@
     1. Compare accuracies with Experiment 1.
     1. Compare classification maps with Experiment 1.  
 
+## Experiment 4: Test on Alberta using high confidence samples
+
+* **Generate high confidence training samples for 4 reflectance channels time series training blocks of Alberta**
+
+    1. Follow Experiment 8 in [the preprocessing tutorial](./modis_250m_preprocessing.md) to generate high confidence training samples for Alberta. You can still use 4 reflectance bands. 
+
+* **Use the same trained dip-res model on Saskatchewan in Experiment 3, but test on new Alberta dataset**
+    1. Follow the same procedure in Experiment 1, but use the new Alterta dataset with high confidence training samples.
+ 
+* **Compare the train, val and test accuracies with Experiment 3**
+    1. Compare accuracies with Experiment 3. The accuracies should be much higher than Experiment 3, because here we only use high confidence samples to calculate accuracies. 
+    1. Compare classification maps with Experiment 3. The classificaiton maps should be the same, because here we use the same model as Experiment 3 to generate maps.  
+
+
+ 
 
 
 
