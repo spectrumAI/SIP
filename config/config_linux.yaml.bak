@@ -516,7 +516,7 @@ train_params:
     val_inter: 1 # if 1, then validation and test are used in each epoch 
     to_test: False # is True, both validation and test data will be used to evaluate training
     prop_test: 1 # if 0.1, then 10% of all test samples are used in each epoch
-    prop_train: 1 #0.01 # if 0.1, then 10% of all train samples are used in each epoch
+    prop_train: 0.1_0.1_0.1_0.1_0.1_0.1_0.1_0.1_0.1_0.1_0.1_0.1_0.1_0.1_0.1 #the proportion of samples to be used for training for each class separated by _
     var: 0 # std of noise added to input when using images as input 
     net_type: ss-res
     print_train_iter_inter: 5
