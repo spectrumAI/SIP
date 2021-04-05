@@ -97,7 +97,7 @@
 
 * **Generate high confidence training samples for 4 reflectance channels time series training blocks of Alberta**
 
-    1. Follow Experiment 8 in [the preprocessing tutorial](./modis_250m_preprocessing.md) to generate high confidence training samples for Alberta. You can still use 4 reflectance bands. 
+    1. Follow Experiment 7 in [the preprocessing tutorial](./modis_250m_preprocessing.md) to generate high confidence training samples for Alberta. You can still use 4 reflectance bands. 
 
 * **Use the same trained dip-res model on Saskatchewan in Experiment 3, but test on new Alberta dataset**
     1. Follow the same procedure in Experiment 1, but use the new Alterta dataset with high confidence training samples.
@@ -111,12 +111,12 @@
 
 * **Generate high confidence reflectance 4 bands time series training blocks for Saskatchewan**
 
-    1. Generate high confidence 4 reflectance samples according to Experiment 7 in [the preprocessing tutorial](./modis_250m_preprocessing.md).
+    1. Generate high confidence 4 reflectance samples according to Experiment 6 in [the preprocessing tutorial](./modis_250m_preprocessing.md).
     1. Assume that the final train blocks are saved into ***MOD13Q1_preprocessed_imgs_sask_refl4_sampling***
  
 * **Generate high confidence reflectance 4 bands time series training blocks for Alberta**
 
-    1. Generate data according to Experiment 8 in [the preprocessing tutorial](./modis_250m_preprocessing.md).
+    1. Generate data according to Experiment 7 in [the preprocessing tutorial](./modis_250m_preprocessing.md).
     1. Assume that the final train blocks are saved into ***MOD13Q1_preprocessed_imgs_alta_refl4_sampling***
 
 * **Prepare data for Saskatchewan**
@@ -157,11 +157,13 @@
 
 
 ## Experiment 6: Train spectral res on Saskatchewan and test on Alberta
-
+* **Change patch size to 1**
+ 
     1. The procedure is exactly the same as Experiment 5. The only difference is before you train the model, make sure in ***config_os.yaml*** file, you set ***patch_size*** to be ***1***. 
 
 ## Experiment 7: Train svm, rf on Saskatchewan and test on Alberta
-
+* **Change classifier, change trian proportion if too slow**
+ 
     1. The procedure is exactly the same as Experiment 5. The only difference is, in ***config_os.yaml***, under ***train_params***, change ***0.1*** in ***prop_train*** to smaller proportions, if it is too slow to train svm or rf. 
 
     1. Compare the performance of different models, i.e., dip-res, ss-res, spectral res, svm, rf. 
