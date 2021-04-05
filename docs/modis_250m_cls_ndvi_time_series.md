@@ -31,7 +31,7 @@
  
 * **Train dip-res model on Saskatchewan**
 
-    1. In ***config_os.yaml***, under ***train_params***, ***lr*** equals 0.0001, ***batch_size_train/val/test/predict*** equals 2, ***net_type*** is dip-res. 
+    1. In ***config_os.yaml***, under ***train_params***, ***lr*** equals 0.0001, ***batch_size_train/val/test/predict*** equals 2, ***net_type*** is ***dip-res***. 
     1. Save ***config_os.yaml***.
     1. Run SIP, click on ***Train classifier*** under ***Classification***, choose the ***config_os.yaml*** you edited. 
     1. If you want to use the save model file to continue training, set ***to_resume_from_latest_checkpoint*** to be ***True*** and also set ***resume_checkpoint_file*** to the model file under ***dirs -> save -> model*** defined in ***config_os.yaml***.  
@@ -107,7 +107,14 @@
     1. Compare classification maps with Experiment 3. The classificaiton maps should be the same, because here we use the same model as Experiment 3 to generate maps.  
 
 
-## Experiment 5: Train patch-based ss_res on Saskatchewan and test on Alberta
+## Experiment 5: Train spectral Dip resnet on Saskatchewan and test on Alberta
+* **Change classifier**
+ 
+    1. The procedure is exactly the same as Experiment 3. The only difference is before you train the model, make sure in ***config_os.yaml*** file, you set ***net_type*** to be ***dip_spe***. 
+
+
+
+## Experiment 6: Train patch-based ss_res on Saskatchewan and test on Alberta
 
 * **Generate high confidence reflectance 4 bands time series training blocks for Saskatchewan**
 
@@ -156,15 +163,10 @@
     1. Run SIP, click on ***Preprocessing -> Modis*** to mosaic the classification maps. Once finished, go to ***output_dir_maps_merge_Modis*** defined in ***config_os.yaml*** to take a look at the mosaiced map. Open it in QGIS and compare it with the true map of Alberta. 
 
 
-## Experiment 6: Train spectral res on Saskatchewan and test on Alberta
-* **Change patch size to 1**
- 
-    1. The procedure is exactly the same as Experiment 5. The only difference is before you train the model, make sure in ***config_os.yaml*** file, you set ***patch_size*** to be ***1***. 
-
 ## Experiment 7: Train svm, rf on Saskatchewan and test on Alberta
 * **Change classifier, change trian proportion if too slow**
  
-    1. The procedure is exactly the same as Experiment 5. The only difference is, in ***config_os.yaml***, under ***train_params***, change ***0.1*** in ***prop_train*** to smaller proportions, if it is too slow to train svm or rf. 
+    1. The procedure is exactly the same as Experiment 6. The only difference is, in ***config_os.yaml***, under ***train_params***, change ***0.1*** in ***prop_train*** to smaller proportions, if it is too slow to train svm or rf. 
 
     1. Compare the performance of different models, i.e., dip-res, ss-res, spectral res, svm, rf. 
 
