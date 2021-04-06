@@ -420,6 +420,7 @@ classification_map_params:
             #- '220_33_38'
             #- '76_112_163'
             #- '255_250_255'
+            #- '255_255_255'
             - white # color of the background, e.g., land area in sea ice classification
             - yellow # color of the first class
             - green
@@ -452,7 +453,7 @@ classification_map_params:
             #- class19
             - Water
             - Snow and ice
-            - Unknown
+            #- Unknown
  
     to_use_class_proportions_as_inverse_weights_train: False 
     my_class_proportions:
@@ -690,10 +691,17 @@ net_params:
         act_fun: LeakyReLU  # LeakyRELU ReLU ...
         pad: reflection  # reflection zero ...
     
-    
+     dip-spe: 
+        channels: 20
+        blocks: 10
+        act_fun: LeakyReLU  # LeakyRELU ReLU ...
+        pad: reflection  # reflection zero ...
+
+   
 
 dip_model_list:
     - dip-res
+    - dip-spe
 
 patch_model_list:
     - ss-res
