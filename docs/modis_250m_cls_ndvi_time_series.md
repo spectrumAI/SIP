@@ -49,7 +49,7 @@
     1. If you want to use the save model file to continue training, set ***to_resume_from_latest_checkpoint*** to be ***True*** and also set ***resume_checkpoint_file*** to the model file under ***dirs -> save -> model*** defined in ***config_os.yaml***.  
     1. Record the training and validation accuracies.
 
-![](./pics/dipres_evi_sask.png)
+![](../pics/dipres_evi_sask.png)
  
 
 * **Mosaic training classification maps for Saskatchewan**
