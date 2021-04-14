@@ -12,7 +12,19 @@
 
 * Strong ***signature variabilities*** of different land cover classes in EVI time series.
 
-## Experiment 1: Train dip-res on Saskatchewan and test on Alberta using EVI time series
+## Classifiers
+
+* Rondom forest (RF), which has been widely used in MODIS time series classification
+
+* Supported vector machine (SVM)
+
+* Patch-based spatial-spectral residual (ss-res) convolutional neural network 
+
+* Patch-based spectral residual (spe-res) convolutional neural network
+
+* Image-based fully convolutional residual (fcn-res, called dip-res in SIP) network  
+
+## Experiment 1: Train fcn-res/dip-res on Saskatchewan and test on Alberta using EVI time series
 
 * **Generate EVI time series training blocks for Saskatchewan**
 
@@ -35,7 +47,10 @@
     1. Save ***config_os.yaml***.
     1. Run SIP, click on ***Train classifier*** under ***Classification***, choose the ***config_os.yaml*** you edited. 
     1. If you want to use the save model file to continue training, set ***to_resume_from_latest_checkpoint*** to be ***True*** and also set ***resume_checkpoint_file*** to the model file under ***dirs -> save -> model*** defined in ***config_os.yaml***.  
-    1. Record the training and validation accuracies. 
+    1. Record the training and validation accuracies.
+
+![](./pics/dipres_evi_sask.png)
+ 
 
 * **Mosaic training classification maps for Saskatchewan**
     1. In ***Config_os.yaml***, under ***Modis_params***, set ***Modis_maps_merge_params*** to be ***True***, set ***input_dir_maps_merge_Modis*** to be ***dirs -> save -> train*** folder defined in ***config_os.yaml*** where you have the classification maps of training images, and set ***maps_merge_Modis_id_str*** to be '\*predict-map\*geocoded.tiff'. 
