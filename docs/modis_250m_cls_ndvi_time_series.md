@@ -14,15 +14,15 @@
 
 ## Classifiers
 
-* Rondom forest (RF), which has been widely used in MODIS time series classification
+* Rondom forest (***rf***), which has been widely used in MODIS time series classification
 
-* Supported vector machine (SVM)
+* Supported vector machine (***svm***)
 
-* Patch-based spatial-spectral residual (ss-res) convolutional neural network 
+* Patch-based spatial-spectral residual (***ss-res***) convolutional neural network 
 
-* Patch-based spectral residual (spe-res) convolutional neural network
+* Patch-based spectral residual (***spe-res***) convolutional neural network
 
-* Image-based fully convolutional residual (fcn-res, called dip-res in SIP) network  
+* Image-based fully convolutional residual (***fcn-res***, called dip-res in SIP) network  
 
 ## Experiment 1: Train fcn-res/dip-res on Saskatchewan and test on Alberta using EVI time series
 
@@ -56,6 +56,8 @@
     1. In ***Config_os.yaml***, under ***Modis_params***, set ***Modis_maps_merge_params*** to be ***True***, set ***input_dir_maps_merge_Modis*** to be ***dirs -> save -> train*** folder defined in ***config_os.yaml*** where you have the classification maps of training images, and set ***maps_merge_Modis_id_str*** to be '\*predict-map\*geocoded.tiff'. 
     1. In ***Config_os.yaml***, under ***Modis_params***, disable all the other preprocessing steps by setting ***to_XXXX_Modis*** to be ***False***.
     1. Run SIP, click on ***Preprocessing -> Modis*** to mosaic the classification maps. Once finished, go to ***output_dir_maps_merge_Modis*** defined in ***config_os.yaml*** to take a look at the mosaiced map. Open it in QGIS and compare it with the true map of Saskatchewan. 
+
+![](../pics/sask_dipss_train.gif)
 
 * **Mosaic validation classification maps for Saskatchewan**
     1. Copy ***data_file.yaml*** under the ***dirs -> data -> val*** folder defined in ***config_os.yaml*** to ***dirs -> data ->predict***. 
