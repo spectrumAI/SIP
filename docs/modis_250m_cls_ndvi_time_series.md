@@ -12,6 +12,10 @@
 
 * Strong ***signature variabilities*** of different land cover classes in EVI time series.
 
+## Study area
+
+* Canada (https://atlas.gc.ca/lcct/en/index.html, http://www.cec.org/sites/default/nalcms/CEC_picmap_EN/index.html)
+
 ## Classifiers
 
 * Rondom forest (***rf***), which has been widely used in MODIS time series classification
@@ -57,7 +61,7 @@
     1. In ***Config_os.yaml***, under ***Modis_params***, disable all the other preprocessing steps by setting ***to_XXXX_Modis*** to be ***False***.
     1. Run SIP, click on ***Preprocessing -> Modis*** to mosaic the classification maps. Once finished, go to ***output_dir_maps_merge_Modis*** defined in ***config_os.yaml*** to take a look at the mosaiced map. Open it in QGIS and compare it with the true map of Saskatchewan. 
 
-    1. The figure below shows training classification map (the one with black missing blocks) vs. ground truth map (the one with red urband classes).
+    1. The figure below shows training classification map vs. ground truth map (the one with red urband classes).
 
 ![](../pics/dipres_evi_sask_train_map.gif)
 
@@ -81,6 +85,14 @@
     1. Run SIP, click on ***Classification -> Test classifier*** to perform test on Alberta. 
     1. Once finish, go to ***all_data -> save -> model*** to take a look at the accuracy in the log file, and also the ***classification maps*** generated.
     1. Compare the training, val and test accuracies for dip-res. 
+
+Table 1. The test accuracy on Alterta.
+
+Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
+------------- | ------------ | ------------- | -------------
+Dipres | 62.74%   | 53.72% | 0.314  
+
+
 
 ![](../pics/dipres_evi_alta_test_cm.png)
 
