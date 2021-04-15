@@ -139,8 +139,8 @@ Dipres | 62.74%   | 0.537 | 31.40%
     1. Compare classification maps with Experiment 1.  
 
 
-![](../pics/dipres_refl4_sask_train_map.png)
-![](../pics/dipres_refl4_alta_test_map.png)
+![](../pics/dipres_refl4_sask_train_map.gif)
+![](../pics/dipres_refl4_alta_test_map.gif)
 ![](../pics/dipres_refl4_alta_test_cm.png)
 
 
