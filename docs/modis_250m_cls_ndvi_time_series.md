@@ -87,8 +87,6 @@
     1. Compare the training, val and test accuracies for dip-res. 
 
 
-![](../pics/dipres_evi_sask_epoch.png)
- 
 ![](../pics/dipres_evi_alta_test_cm.png)
 
 
@@ -152,15 +150,15 @@ Table 2. Comparing test accuracies, four reflectance bands vs. EVI
 Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
 ------------- | ------------ | ------------- | -------------
 Dipres-EVI | 62.74%   | 0.537 | 31.40%  
-Dipres-refl4 | 87.24%   | 0.814 | 59.32%  
+Dipres-refl4 | 68.24%   | 0.600 | 35.90%  
 
 
-Table 2. Comparing train, val, test accuracies, four reflectance bands vs. EVI 
+Table 3. Comparing train, val, test accuracies, four reflectance bands vs. EVI 
 
 Method | Training OA | Val OA | Test OA
 ------------- | ------------ | ------------- | -------------
 Dipres-EVI | 74.52%   | 70.63% | 62.74%  
-Dipres-refl4 | 78.18%   | 76.81% | 87.24%  
+Dipres-refl4 | 78.18%   | 76.81% | 68.24%  
 
 
 ## Experiment 4: Test on Alberta using high confidence samples
@@ -175,6 +173,16 @@ Dipres-refl4 | 78.18%   | 76.81% | 87.24%
 * **Compare the train, val and test accuracies with Experiment 3**
     1. Compare accuracies with Experiment 3. The accuracies should be much higher than Experiment 3, because here we only use high confidence samples to calculate accuracies. 
     1. Compare classification maps with Experiment 3. The classificaiton maps should be the same, because here we use the same model as Experiment 3 to generate maps.  
+
+
+![](../pics/dipres_refl4_alta_test_cm_sample.png)
+
+Table 4. Comparing test accuracies, using sampled pixels vs. using all pixesl for calculating accuracies 
+
+Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
+------------- | ------------ | ------------- | -------------
+Dipres-sampled-pixels | 87,24%   | 0.814 | 59.32%  
+Dipres-all-pixels | 68.24%   | 0.600 | 35.90% 
 
 
 ## Experiment 5: Train spectral Dip resnet on Saskatchewan and test on Alberta
