@@ -86,15 +86,17 @@
     1. Once finish, go to ***all_data -> save -> model*** to take a look at the accuracy in the log file, and also the ***classification maps*** generated.
     1. Compare the training, val and test accuracies for dip-res. 
 
+
+
+![](../pics/dipres_evi_alta_test_cm.png)
+
+
 Table 1. The test accuracy on Alterta.
 
 Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
 ------------- | ------------ | ------------- | -------------
-Dipres | 62.74%   | 53.72% | 0.314  
+Dipres | 62.74%   | 0.537 | 31.40%  
 
-
-
-![](../pics/dipres_evi_alta_test_cm.png)
 
 
 * **Mosaic test classification maps for Alberta**
