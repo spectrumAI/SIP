@@ -61,7 +61,7 @@
     1. In ***Config_os.yaml***, under ***Modis_params***, disable all the other preprocessing steps by setting ***to_XXXX_Modis*** to be ***False***.
     1. Run SIP, click on ***Preprocessing -> Modis*** to mosaic the classification maps. Once finished, go to ***output_dir_maps_merge_Modis*** defined in ***config_os.yaml*** to take a look at the mosaiced map. Open it in QGIS and compare it with the true map of Saskatchewan. 
 
-    1. The figure below shows training classification map vs. ground truth map (the one with red urband classes).
+    1. The figure below shows training classification map (the one with black missing blocks) vs. ground truth map (the one with red urband classes).
 
 ![](../pics/dipres_evi_sask_train_map.gif)
 
@@ -104,7 +104,7 @@ Dipres | 62.74%   | 0.537 | 31.40%
     1. In ***config_os.yaml***, under ***Modis_params***, set ***Modis_maps_merge_params*** to be ***True***, set ***input_dir_maps_merge_Modis*** to be ***MOD13Q1_preprocessed_imgs_sask_evi -> all_data -> save -> test*** folder defined in ***config_os.yaml*** where you have the classification maps of test images, and set ***maps_merge_Modis_id_str*** to be '\*predict-map\*geocoded.tiff'. 
     1. In ***config_os.yaml***, under ***Modis_params***, disable all the other preprocessing steps by setting ***to_XXXX_Modis*** to be ***False***.
     1. Run SIP, click on ***Preprocessing -> Modis*** to mosaic the classification maps. Once finished, go to ***output_dir_maps_merge_Modis*** defined in ***config_os.yaml*** to take a look at the mosaiced map. Open it in QGIS and compare it with the true map of Alberta. 
-    1. The figure below shows training classification map (the one with black missing blocks) vs. ground truth map (the one with red urband classes).
+    1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
 
 
 ![](../pics/dipres_evi_alta_test_map.gif)
@@ -138,8 +138,11 @@ Dipres | 62.74%   | 0.537 | 31.40%
     1. Compare accuracies with Experiment 1.
     1. Compare classification maps with Experiment 1.  
 
-
+    1. The figure below shows training classification map vs. ground truth map (the one with red urband classes).
 ![](../pics/dipres_refl4_sask_train_map.gif)
+!
+    1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
+
 ![](../pics/dipres_refl4_alta_test_map.gif)
 ![](../pics/dipres_refl4_alta_test_cm.png)
 
