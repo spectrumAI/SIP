@@ -184,15 +184,19 @@ Dipres-refl4 |77.51% | 77.67% | 69.10%
     1. Compare classification maps with Experiment 3. The classificaiton maps should be the same, because here we use the same model as Experiment 3 to generate maps.  
 
 
-![](../pics/dipres_refl4_alta_test_cm_sample.png)
+![](../pics/dipres_refl4_alta_test_cm_sample_15classes.png)
 
 Table 4. Comparing test accuracies, using sampled pixels vs. using all pixesl for calculating accuracies 
 
 Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
 ------------- | ------------ | ------------- | -------------
+Dipres-all-pixels | 69.10% | 0.607 | 37.20%
+Dipres-sample-pixels | 88.27% | 0.829 | 62.50%
+<!-- These are results of using 19 classes 
 Dipres-sampled-pixels | 87,24%   | 0.814 | 59.32%  
-Dipres-all-pixels | 68.24%   | 0.600 | 35.90% 
-
+Dipres-all-pixels | 68.24%   | 0.600 | 35.90%
+![](../pics/dipres_refl4_alta_test_cm_sample.png)
+-->
 
 ## Experiment 5: Train spectral Dip resnet on Saskatchewan and test on Alberta
 * **Change classifier**
