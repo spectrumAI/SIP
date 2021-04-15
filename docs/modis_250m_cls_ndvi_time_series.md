@@ -82,7 +82,7 @@
     1. Once finish, go to ***all_data -> save -> model*** to take a look at the accuracy in the log file, and also the ***classification maps*** generated.
     1. Compare the training, val and test accuracies for dip-res. 
 
-![](../pics/dipres_evi_alta_test_cm.gif)
+![](../pics/dipres_evi_alta_test_cm.png)
 
 
 * **Mosaic test classification maps for Alberta**
