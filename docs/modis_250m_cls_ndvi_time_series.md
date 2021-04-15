@@ -129,36 +129,45 @@ Dipres | 62.74%   | 0.537 | 31.40%
 
 * **Train dip-res model on Saskatchewan and test on Alberta**
     1. Follow the same procedure in Experiment 1.
- 
-![](../pics/dipres_refl4_sask_epoch.png)
- 
+
+![](../pics/dipres_refl4_sask_epoch_15classes.png)
+
 * **Compare the train, val and test accuracies with Experiment 1**
     1. Compare accuracies with Experiment 1.
     1. Compare classification maps with Experiment 1.  
 
     1. The figure below shows training classification map vs. ground truth map (the one with red urband classes).
-![](../pics/dipres_refl4_sask_train_map.gif)
-!
+
+![](../pics/dipres_refl4_sask_train_map_15classes.gif)
+    
     1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
 
+![](../pics/dipres_refl4_alta_test_map_15classes.gif)
+
+<!-- these are the results using 19 classes ![](../pics/dipres_refl4_sask_epoch.png)
+![](../pics/dipres_refl4_sask_train_map.gif)
 ![](../pics/dipres_refl4_alta_test_map.gif)
-![](../pics/dipres_refl4_alta_test_cm.png)
+![](../pics/dipres_refl4_alta_test_cm.png) -->
+
+![](../pics/dipres_refl4_alta_test_cm_15classes.png)
 
 
 Table 2. Comparing test accuracies, four reflectance bands vs. EVI 
 
 Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
 ------------- | ------------ | ------------- | -------------
-Dipres-EVI | 62.74%   | 0.537 | 31.40%  
-Dipres-refl4 | 68.24%   | 0.600 | 35.90%  
+Dipres-EVI | 62.74%   | 0.537 | 31.40% 
+Dipres-refl4 | 69.10% | 0.607 | 37.20% 
+<!-- Here is the reults using 19 classes rather than 15 classes Dipres-refl4 | 68.24%   | 0.600 | 35.90%  -->
 
 
 Table 3. Comparing train, val, test accuracies, four reflectance bands vs. EVI 
 
 Method | Training OA | Val OA | Test OA
 ------------- | ------------ | ------------- | -------------
-Dipres-EVI | 74.52%   | 70.63% | 62.74%  
-Dipres-refl4 | 78.18%   | 76.81% | 68.24%  
+Dipres-EVI | 74.52%   | 70.63% | 62.74% 
+Dipres-refl4 |77.51% | 77.67% | 69.10% 
+<!--Here, use 19 clases, rather than using 15 classes, Dipres-refl4 | 78.18%   | 76.81% | 68.24%  -->
 
 
 ## Experiment 4: Test on Alberta using high confidence samples
