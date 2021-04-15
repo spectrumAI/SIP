@@ -63,6 +63,7 @@
 
     1. The figure below shows training classification map (the one with black missing blocks) vs. ground truth map (the one with red urband classes).
 
+![](../pics/legend_canada_modis.png)
 ![](../pics/dipres_evi_sask_train_map.gif)
 
 
