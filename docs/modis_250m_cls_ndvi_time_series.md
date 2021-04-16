@@ -118,6 +118,9 @@ Dipres | 62.74%   | 0.537 | 31.40%
 * **Train dip-res model on Saskatchewan and test on Alberta**
     1. Follow the same procedure in Experiment 1. 
 
+![](../pics/dipres_ndvi_sask_epoch_15classes.png)
+
+
 * **Compare the train, val and test accuracies with Experiment 1**
     1. Compare accuracies with Experiment 1.
     1. Compare classification maps with Experiment 1.  
@@ -126,11 +129,11 @@ Dipres | 62.74%   | 0.537 | 31.40%
 
 
 ![](../pics/legend_canada_modis.png)
-![](../pics/dipres_ndvi_sask_train_map.gif)
+![](../pics/dipres_ndvi_sask_train_map_15classes.gif)
 
     1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
 
-![](../pics/dipres_ndvi_alta_test_map.gif)
+![](../pics/dipres_ndvi_alta_test_map_15classes.gif)
 
 ![](../pics/dipres_ndvi_alta_test_cm_15classes.png)
 
