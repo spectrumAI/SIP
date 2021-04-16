@@ -130,9 +130,9 @@ Dipres | 62.74%   | 0.537 | 31.40%
 
     1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
 
+![](../pics/dipres_ndvi_alta_test_map.gif)
 
-
-![](../pics/dipres_ndvi_alta_test_cm.png)
+![](../pics/dipres_ndvi_alta_test_cm_15classes.png)
 
 
 Table 2. The test accuracy on Alterta.
