@@ -170,8 +170,54 @@ Dipres-EVI | 74.52%   | 70.63% | 62.74%
 Dipres-refl4 |77.51% | 77.67% | 69.10% 
 <!--Here, use 19 clases, rather than using 15 classes, Dipres-refl4 | 78.18%   | 76.81% | 68.24%  -->
 
+## Experiment 4: Train dip-res on Saskatchewan and test on Alberta using time series of 4 reflectance channels, evi and ndvi
 
-## Experiment 4: Test on Alberta using high confidence samples
+* **Generate 4 reflectance channels, evi and ndvi time series training blocks for Saskatchewan and Alberta**
+
+    1. Follow the same procedure in Experiment 1. Not only 4 reflectance bands, but also the EVI band and NDVI band are used to generate a time series.  
+
+* **Train dip-res model on Saskatchewan and test on Alberta**
+    1. Follow the same procedure in Experiment 1.
+
+![](../pics/dipres_all_sask_epoch_15classes.png)
+
+* **Compare the train, val and test accuracies with previous Experiments**
+    1. Compare accuracies with previous Experiments.
+    1. Compare classification maps with previous Experiments.  
+
+    1. The figure below shows training classification map vs. ground truth map (the one with red urband classes).
+
+![](../pics/dipres_all_sask_train_map_15classes.gif)
+    
+    1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
+
+![](../pics/dipres_all_alta_test_map_15classes.gif)
+
+![](../pics/dipres_all_alta_test_cm_15classes.png)
+
+
+Table 4. Comparing test accuracies, four reflectance bands vs. EVI vs. using all bands 
+
+Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
+------------- | ------------ | ------------- | -------------
+Dipres-EVI | 62.74%   | 0.537 | 31.40% 
+Dipres-refl4 | 69.10% | 0.607 | 37.20%
+Dipres-all | 67.84% | 0.601 | 36.72% 
+<!-- Here is the reults using 19 classes rather than 15 classes Dipres-refl4 | 68.24%   | 0.600 | 35.90%  -->
+
+
+Table 5. Comparing train, val, test accuracies, four reflectance bands vs. EVI vs. using all bands 
+
+Method | Training OA | Val OA | Test OA
+------------- | ------------ | ------------- | -------------
+Dipres-EVI | 74.52%   | 70.63% | 62.74% 
+Dipres-refl4 |77.51% | 77.67% | 69.10%
+Dipres-all | 78.09% | 77.94% | 67.84% 
+<!--Here, use 19 clases, rather than using 15 classes, Dipres-refl4 | 78.18%   | 76.81% | 68.24%  -->
+
+
+
+## Experiment 5: Test on Alberta using high confidence samples
 
 * **Generate high confidence training samples for 4 reflectance channels time series training blocks of Alberta**
 
@@ -187,7 +233,7 @@ Dipres-refl4 |77.51% | 77.67% | 69.10%
 
 ![](../pics/dipres_refl4_alta_test_cm_sample_15classes.png)
 
-Table 4. Comparing test accuracies, using sampled pixels vs. using all pixesl for calculating accuracies 
+Table 6. Comparing test accuracies, using sampled pixels vs. using all pixesl for calculating accuracies 
 
 Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
 ------------- | ------------ | ------------- | -------------
@@ -199,14 +245,14 @@ Dipres-all-pixels | 68.24%   | 0.600 | 35.90%
 ![](../pics/dipres_refl4_alta_test_cm_sample.png)
 -->
 
-## Experiment 5: Train spectral Dip resnet on Saskatchewan and test on Alberta
+## Experiment 6: Train spectral Dip resnet on Saskatchewan and test on Alberta
 * **Change classifier**
  
     1. The procedure is exactly the same as Experiment 3. The only difference is before you train the model, make sure in ***config_os.yaml*** file, you set ***net_type*** to be ***dip_spe***. 
 
 
 
-## Experiment 6: Train patch-based ss_res on Saskatchewan and test on Alberta
+## Experiment 7: Train patch-based ss_res on Saskatchewan and test on Alberta
 
 * **Generate high confidence reflectance 4 bands time series training blocks for Saskatchewan**
 

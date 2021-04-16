@@ -22,6 +22,7 @@ Land cover and land use (LCLU) maps are critical in various applications. The Mo
 
 * [Modis 250m land products pre-processing](./modis_250m_preprocessing.md)
 * [Modis 250m LCLU classification using SIP](./modis_250m_cls_ndvi_time_series.md)
+* [Other tasks](./modis_250m_tasks.md)
 <!--* [Modis 250m land products band importance exploration](./modis_250m_band_importance.md)
 * [Classifier comparison for LCLU mapping from Modis 250m products](./modis_250m_classifier_comparison.md)
 * [Large scale LCLU mapping from Modis 250m products](./modis_250m_large_scale_mapping.md) -->
