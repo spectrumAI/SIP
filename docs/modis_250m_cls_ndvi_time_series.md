@@ -122,6 +122,26 @@ Dipres | 62.74%   | 0.537 | 31.40%
     1. Compare accuracies with Experiment 1.
     1. Compare classification maps with Experiment 1.  
 
+    1. The figure below shows training classification map vs. ground truth map (the one with red urband classes).
+
+
+![](../pics/legend_canada_modis.png)
+![](../pics/dipres_ndvi_sask_train_map.gif)
+
+    1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
+
+
+
+![](../pics/dipres_ndvi_alta_test_cm.png)
+
+
+Table 2. The test accuracy on Alterta.
+
+Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
+------------- | ------------ | ------------- | -------------
+Dipres-EVI | 62.74%   | 0.537 | 31.40%  
+Dipres-NDVI | 62.88% | 0.530 | 29.37%
+
 ## Experiment 3: Train dip-res on Saskatchewan and test on Alberta using time series of 4 reflectance channels
 
 * **Generate 4 reflectance channels time series training blocks for Saskatchewan and Alberta**
@@ -153,20 +173,22 @@ Dipres | 62.74%   | 0.537 | 31.40%
 ![](../pics/dipres_refl4_alta_test_cm_15classes.png)
 
 
-Table 2. Comparing test accuracies, four reflectance bands vs. EVI 
+Table 3. Comparing test accuracies, four reflectance bands vs. EVI 
 
 Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
 ------------- | ------------ | ------------- | -------------
 Dipres-EVI | 62.74%   | 0.537 | 31.40% 
+Dipres-NDVI | 62.88% | 0.530 | 29.37%
 Dipres-refl4 | 69.10% | 0.607 | 37.20% 
 <!-- Here is the reults using 19 classes rather than 15 classes Dipres-refl4 | 68.24%   | 0.600 | 35.90%  -->
 
 
-Table 3. Comparing train, val, test accuracies, four reflectance bands vs. EVI 
+Table 4. Comparing train, val, test accuracies, four reflectance bands vs. EVI 
 
 Method | Training OA | Val OA | Test OA
 ------------- | ------------ | ------------- | -------------
 Dipres-EVI | 74.52%   | 70.63% | 62.74% 
+Dipres-NDVI | 73.63% | 73.58% | 62.88%
 Dipres-refl4 |77.51% | 77.67% | 69.10% 
 <!--Here, use 19 clases, rather than using 15 classes, Dipres-refl4 | 78.18%   | 76.81% | 68.24%  -->
 
@@ -196,21 +218,23 @@ Dipres-refl4 |77.51% | 77.67% | 69.10%
 ![](../pics/dipres_all_alta_test_cm_15classes.png)
 
 
-Table 4. Comparing test accuracies, four reflectance bands vs. EVI vs. using all bands 
+Table 5. Comparing test accuracies, four reflectance bands vs. EVI vs. using all bands 
 
 Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
 ------------- | ------------ | ------------- | -------------
 Dipres-EVI | 62.74%   | 0.537 | 31.40% 
+Dipres-NDVI | 62.88% | 0.530 | 29.37%
 Dipres-refl4 | 69.10% | 0.607 | 37.20%
 Dipres-all | 67.84% | 0.601 | 36.72% 
 <!-- Here is the reults using 19 classes rather than 15 classes Dipres-refl4 | 68.24%   | 0.600 | 35.90%  -->
 
 
-Table 5. Comparing train, val, test accuracies, four reflectance bands vs. EVI vs. using all bands 
+Table 6. Comparing train, val, test accuracies, four reflectance bands vs. EVI vs. using all bands 
 
 Method | Training OA | Val OA | Test OA
 ------------- | ------------ | ------------- | -------------
 Dipres-EVI | 74.52%   | 70.63% | 62.74% 
+Dipres-NDVI | 73.63% | 73.58% | 62.88%
 Dipres-refl4 |77.51% | 77.67% | 69.10%
 Dipres-all | 78.09% | 77.94% | 67.84% 
 <!--Here, use 19 clases, rather than using 15 classes, Dipres-refl4 | 78.18%   | 76.81% | 68.24%  -->
@@ -233,7 +257,7 @@ Dipres-all | 78.09% | 77.94% | 67.84%
 
 ![](../pics/dipres_refl4_alta_test_cm_sample_15classes.png)
 
-Table 6. Comparing test accuracies, using sampled pixels vs. using all pixesl for calculating accuracies 
+Table 7. Comparing test accuracies, using sampled pixels vs. using all pixesl for calculating accuracies 
 
 Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
 ------------- | ------------ | ------------- | -------------
