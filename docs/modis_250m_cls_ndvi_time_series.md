@@ -272,7 +272,56 @@ Dipres-all-pixels | 68.24%   | 0.600 | 35.90%
 ![](../pics/dipres_refl4_alta_test_cm_sample.png)
 -->
 
-## Experiment 6: Train spectral Dip resnet on Saskatchewan and test on Alberta
+## Experiment 6: Train dip-res on Saskatchewan and test on Alberta using summer season time series of 4 reflectance channels, instead of all seasons
+
+* **Generate summer season time series 4 reflectance channels training blocks for Saskatchewan and Alberta**
+
+    1. Follow the same procedure in Experiment 1. Here, you should set ***dates_list_to_be_processed_Modis*** in ***config_os.yaml*** to be ***2010161, 2010177, 2010193, 2010209, 2010225, 2010241, 2010257, 2010273, 2010289***, so that you can just use the data in June, July, August, September and October to generate time series. 
+
+* **Train dip-res model on Saskatchewan and test on Alberta**
+    1. Follow the same procedure in Experiment 1.
+
+![](../pics/dipres_refl4_sask_epoch_15classes_summer.png)
+
+* **Compare the train, val and test accuracies with previous Experiments**
+    1. Compare accuracies with previous Experiments.
+    1. Compare classification maps with previous Experiments.  
+
+    1. The figure below shows training classification map vs. ground truth map (the one with red urband classes).
+
+![](../pics/dipres_refl4_sask_train_map_15classes_summer.gif)
+    
+    1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
+
+![](../pics/dipres_refl4_alta_test_map_15classes_summer.gif)
+
+![](../pics/dipres_refl4_alta_test_cm_15classes_summer.png)
+
+
+Table 8. Comparing test accuracies 
+
+Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
+------------- | ------------ | ------------- | -------------
+Dipres-EVI | 62.74%   | 0.537 | 31.40% 
+Dipres-NDVI | 62.88% | 0.530 | 29.37%
+Dipres-refl4 | 69.10% | 0.607 | 37.20%
+Dipres-all | 67.84% | 0.601 | 36.72% 
+<!-- Here is the reults using 19 classes rather than 15 classes Dipres-refl4 | 68.24%   | 0.600 | 35.90%  -->
+
+
+Table 9. Comparing train, val, test accuracies 
+
+Method | Training OA | Val OA | Test OA
+------------- | ------------ | ------------- | -------------
+Dipres-EVI | 74.52%   | 70.63% | 62.74% 
+Dipres-NDVI | 73.63% | 73.58% | 62.88%
+Dipres-refl4 |77.51% | 77.67% | 69.10%
+Dipres-all | 78.09% | 77.94% | 67.84% 
+<!--Here, use 19 clases, rather than using 15 classes, Dipres-refl4 | 78.18%   | 76.81% | 68.24%  -->
+
+
+
+## Experiment 7: Train spectral Dip resnet on Saskatchewan and test on Alberta
 * **Change classifier**
  
     1. The procedure is exactly the same as Experiment 3. The only difference is before you train the model, make sure in ***config_os.yaml*** file, you set ***net_type*** to be ***dip_spe***. 
