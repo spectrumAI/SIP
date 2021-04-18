@@ -330,7 +330,7 @@ Dipres-refl4-summer | 75.87% | 77.12% | 63.24%
 * **Train dip-res model on Saskatchewan and test on Alberta**
     1. Follow the same procedure in Experiment 1. But, make sure that ***to_use_class_proportions_as_inverse_weights_train*** is ***True***, and ***my_class_proportions*** is ***1, 1, 1, 1, 1, 1, 0.1, 0.1, 0.1, 1, 1, 1, 0.1, 1, 0.1*** to assign higher weights to Classes 7, 8, 9, 13 and 15. 
 
-![](../pics/dipres_refl4_sask_epoch_15classes_classweights.png)
+![](../pics/dipres_refl4_sask_epoch_15classes_class_weights.png)
 
 * **Compare the train, val and test accuracies with previous Experiments**
     1. Compare accuracies with previous Experiments.
@@ -338,13 +338,13 @@ Dipres-refl4-summer | 75.87% | 77.12% | 63.24%
 
     1. The figure below shows training classification map vs. ground truth map (the one with red urband classes).
 
-![](../pics/dipres_refl4_sask_train_map_15classes_classweights.gif)
+![](../pics/dipres_refl4_sask_train_map_15classes_class_weights.gif)
     
     1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
 
-![](../pics/dipres_refl4_alta_test_map_15classes_classweights.gif)
+![](../pics/dipres_refl4_alta_test_map_15classes_class_weights.gif)
 
-![](../pics/dipres_refl4_alta_test_cm_15classes_classweights.png)
+![](../pics/dipres_refl4_alta_test_cm_15classes_class_weights.png)
 
 
 Table 9. Comparing test accuracies 
