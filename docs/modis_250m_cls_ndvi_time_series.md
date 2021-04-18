@@ -306,6 +306,7 @@ Dipres-EVI | 62.74%   | 0.537 | 31.40%
 Dipres-NDVI | 62.88% | 0.530 | 29.37%
 Dipres-refl4 | 69.10% | 0.607 | 37.20%
 Dipres-all | 67.84% | 0.601 | 36.72% 
+Dipres-refl4-summer | 63.24% | 0.550 | 36.79% 
 <!-- Here is the reults using 19 classes rather than 15 classes Dipres-refl4 | 68.24%   | 0.600 | 35.90%  -->
 
 
@@ -317,6 +318,58 @@ Dipres-EVI | 74.52%   | 70.63% | 62.74%
 Dipres-NDVI | 73.63% | 73.58% | 62.88%
 Dipres-refl4 |77.51% | 77.67% | 69.10%
 Dipres-all | 78.09% | 77.94% | 67.84% 
+Dipres-refl4-summer | 75.87% | 77.12% | 63.24% 
+<!--Here, use 19 clases, rather than using 15 classes, Dipres-refl4 | 78.18%   | 76.81% | 68.24%  -->
+
+## Experiment 7: Train dip-res on Saskatchewan and test on Alberta using time series of 4 reflectance channels, using different weights for different classes
+
+* **Generate summer season time series 4 reflectance channels training blocks for Saskatchewan and Alberta**
+
+    1. Follow the same procedure in Experiment 1.  
+
+* **Train dip-res model on Saskatchewan and test on Alberta**
+    1. Follow the same procedure in Experiment 1. But, make sure that ***to_use_class_proportions_as_inverse_weights_train*** is ***True***, and ***my_class_proportions*** is ***1, 1, 1, 1, 1, 1, 0.1, 0.1, 0.1, 1, 1, 1, 0.1, 1, 0.1*** to assign higher weights to Classes 7, 8, 9, 13 and 15. 
+
+![](../pics/dipres_refl4_sask_epoch_15classes_classweights.png)
+
+* **Compare the train, val and test accuracies with previous Experiments**
+    1. Compare accuracies with previous Experiments.
+    1. Compare classification maps with previous Experiments.  
+
+    1. The figure below shows training classification map vs. ground truth map (the one with red urband classes).
+
+![](../pics/dipres_refl4_sask_train_map_15classes_classweights.gif)
+    
+    1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
+
+![](../pics/dipres_refl4_alta_test_map_15classes_classweights.gif)
+
+![](../pics/dipres_refl4_alta_test_cm_15classes_classweights.png)
+
+
+Table 9. Comparing test accuracies 
+
+Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
+------------- | ------------ | ------------- | -------------
+Dipres-EVI | 62.74%   | 0.537 | 31.40% 
+Dipres-NDVI | 62.88% | 0.530 | 29.37%
+Dipres-refl4 | 69.10% | 0.607 | 37.20%
+Dipres-all | 67.84% | 0.601 | 36.72% 
+Dipres-refl4-summer | 63.24% | 0.550 | 36.79% 
+Dipres-refl4-class-weights | 69.45% | 0.610 | 36.10% 
+<!-- Here is the reults using 19 classes rather than 15 classes Dipres-refl4 | 68.24%   | 0.600 | 35.90%  -->
+
+
+Table 10. Comparing train, val, test accuracies 
+
+Method | Training OA | Val OA | Test OA
+------------- | ------------ | ------------- | -------------
+Dipres-EVI | 74.52%   | 70.63% | 62.74% 
+Dipres-NDVI | 73.63% | 73.58% | 62.88%
+Dipres-refl4 |77.51% | 77.67% | 69.10%
+Dipres-all | 78.09% | 77.94% | 67.84% 
+Dipres-refl4-summer | 75.87% | 77.12% | 63.24% 
+Dipres-refl4-claass-weights | 77.65% | 77.34% | 69.45% 
 <!--Here, use 19 clases, rather than using 15 classes, Dipres-refl4 | 78.18%   | 76.81% | 68.24%  -->
 
 
