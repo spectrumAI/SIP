@@ -164,9 +164,19 @@ Dipres-NDVI | 62.88% | 0.530 | 29.37%
 
 ![](../pics/dipres_refl4_sask_train_map_15classes.gif)
     
-    1. The figure below shows test classification map vs. ground truth map (the one with red urband classes).
+The figure below shows test classification map vs. ground truth map (the one with red urband classes).
 
 ![](../pics/dipres_refl4_alta_test_map_15classes.gif)
+
+The figure below shows test classification map vs. prediction confidence map (hot color means higher confidence).
+
+![](../pics/dipres_refl4_alta_test_map_15classes_prob.gif)
+
+The figure below shows ground truth map vs. prediction confidence map (hot color means higher confidence).
+
+![](../pics/dipres_refl4_alta_test_map_15classes_prob2.gif)
+
+
 
 <!-- these are the results using 19 classes ![](../pics/dipres_refl4_sask_epoch.png)
 ![](../pics/dipres_refl4_sask_train_map.gif)
