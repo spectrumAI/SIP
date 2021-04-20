@@ -326,7 +326,7 @@ Dipres-all | 78.09% | 77.94% | 67.84%
 Dipres-refl4-summer | 75.87% | 77.12% | 63.24% 
 <!--Here, use 19 clases, rather than using 15 classes, Dipres-refl4 | 78.18%   | 76.81% | 68.24%  -->
 
-## Experiment 7: Train dip-res on Saskatchewan and test on Alberta using time series of 4 reflectance channels, using different weights for different classes
+<!-- ## Experiment 7: Train dip-res on Saskatchewan and test on Alberta using time series of 4 reflectance channels, using different weights for different classes
 
 * **Generate summer season time series 4 reflectance channels training blocks for Saskatchewan and Alberta**
 
@@ -362,7 +362,6 @@ Dipres-refl4 | 69.10% | 0.607 | 37.20%
 Dipres-all | 67.84% | 0.601 | 36.72% 
 Dipres-refl4-summer | 63.24% | 0.550 | 36.79% 
 Dipres-refl4-class-weights | 69.45% | 0.610 | 36.10% 
-<!-- Here is the reults using 19 classes rather than 15 classes Dipres-refl4 | 68.24%   | 0.600 | 35.90%  -->
 
 
 Table 10. Comparing train, val, test accuracies 
@@ -430,7 +429,7 @@ Dipres-refl4-claass-weights | 77.65% | 77.34% | 69.45%
 Dipres-refl4-claass-weights2 | 70.54% | 72.13% | 65.63% 
 <!--Here, use 19 clases, rather than using 15 classes, Dipres-refl4 | 78.18%   | 76.81% | 68.24%  -->
 
-
+-->
 
 ## Experiment 7: Train spectral Dip resnet on Saskatchewan and test on Alberta
 * **Change classifier**
