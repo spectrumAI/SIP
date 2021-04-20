@@ -375,6 +375,39 @@ Dipres-all | 78.09% | 77.94% | 67.84%
 Dipres-refl4-summer | 75.87% | 77.12% | 63.24% 
 Dipres-refl4-claass-weights | 75.54% | 76.62% | 65.06% 
 
+## Experiment 8: Train dip-res on Saskatchewan and test on Alberta using different weights for different classes, readjust class weights during test
+
+* **Generate summer season time series 4 reflectance channels training blocks for Saskatchewan and Alberta**
+
+    1. Follow the same procedure in Experiment 1.  
+
+* **Change class weights of the Urban class**
+    1. In the previous experiments, the urban class has been over-estimated. How do we reduce over-estimation of the urban class during test? Open the ***config_os.yaml*** file, and set ***to_adjust_soft_class_membership_in_test_inference*** to be ***True***, and set ***my_class_weights_test*** to be ***'1_1_1_1_1_1_1_1_1_1_1_1_0.1_1_1'***, so that the weight the urban class is reduced to be ***0.1*** to reduce the number of pixels that will be estimated as being the urban class. 
+ 
+* **Compare the train, val and test accuracies with previous Experiments**
+    1. Compare accuracies with previous Experiments.
+    1. Compare classification maps with previous Experiments.  
+
+The figure below shows test classification map vs. ground truth map (the one with red urband classes).
+
+![](../pics/dipres_refl4_alta_test_map_15classes_class_weights3_readjust.gif)
+
+![](../pics/dipres_refl4_alta_test_cm_15classes_class_weights3_readjust.png)
+
+
+Table 11. Comparing test accuracies 
+
+Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
+------------- | ------------ | ------------- | -------------
+Dipres-EVI | 62.74%   | 0.537 | 31.40% 
+Dipres-NDVI | 62.88% | 0.530 | 29.37%
+Dipres-refl4 | 69.10% | 0.607 | 37.20%
+Dipres-all | 67.84% | 0.601 | 36.72% 
+Dipres-refl4-summer | 63.24% | 0.550 | 36.79% 
+Dipres-refl4-class-weights | 65.06% | 0.569 | 38.54% 
+Dipres-refl4-class-weights-readjust | 68.11% | 0.601 | 37.18% 
+
+
 
 <!-- ## Experiment 8: Train dip-res on Saskatchewan and test on Alberta using time series of 4 reflectance channels, using different weights for different classes
 
