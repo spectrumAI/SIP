@@ -218,6 +218,8 @@ Modis_params:
     
     Modis_generate_small_blocks_params:
         to_generate_small_blocks_Modis: False
+        to_just_generate_label_map_small_blocks_Modis: False
+ 
         input_dir_small_blocks_Modis: \media\l44xu\hulk\SIP\data\landsat8_raw_hdf\clip\
         output_dir_small_blocks_Modis: \media\l44xu\hulk\SIP\data\landsat8_preprocessed_imgs\
         generate_small_blocks_Modis_id_str:
