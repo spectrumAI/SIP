@@ -328,7 +328,7 @@ Dipres-refl4-summer | 75.87% | 77.12% | 63.24%
 
 ## Experiment 7: Train dip-res on Saskatchewan and test on Alberta using time series of 4 reflectance channels, using different weights for different classes
 
-* **Generate summer season time series 4 reflectance channels training blocks for Saskatchewan and Alberta**
+* **Generate whole year time series 4 reflectance channels training blocks for Saskatchewan and Alberta**
 
     1. Follow the same procedure in Experiment 1.  
 
@@ -377,7 +377,7 @@ Dipres-refl4-claass-weights | 75.54% | 76.62% | 65.06%
 
 ## Experiment 8: Train dip-res on Saskatchewan and test on Alberta using different weights for different classes, readjust class weights during test
 
-* **Generate summer season time series 4 reflectance channels training blocks for Saskatchewan and Alberta**
+* **Generate whole year time series 4 reflectance channels training blocks for Saskatchewan and Alberta**
 
     1. Follow the same procedure in Experiment 1.  
 
@@ -407,6 +407,41 @@ Dipres-refl4-summer | 63.24% | 0.550 | 36.79%
 Dipres-refl4-class-weights | 65.06% | 0.569 | 38.54% 
 Dipres-refl4-class-weights-readjust | 68.11% | 0.601 | 37.18% 
 
+## Experiment 9: Test the trained model in Experiment 7 on Saskatchewan data of year 2015
+
+* **Generate whole year time series 4 reflectance channels for Sask of year 2015**
+
+    1. Follow the same procedure in Experiment 1. But, instead of using year 2010 data, download and process the year 2015 data.   
+
+* **Compare test accuracies with Experiment 7, test on year 2010 Alta vs. test on year 2015 Sask**
+
+The figure below shows test classification map vs. ground truth map (the one with red urband classes).
+
+![](../pics/dipres_refl4_sask_2015_test_map_15classes_class_weights.gif)
+
+The figure below shows ground truth maps of 2010 and 2015 for sask.
+
+![](../pics/sask_2010_2015_map.gif)
+
+The figure below shows soft class membership of the fifth class vs. ground truth map.
+
+![](../pics/dipres_refl4_sask_2015_test_softlabel_15classes_class_weights.gif)
+
+
+![](../pics/dipres_refl4_sask_2015_test_cm_15classes_class_weights.png)
+
+Table 11. Comparing test accuracies 
+
+Method | Overall Accuracy | Kappa Coefficient | Class Averaged Accuracies
+------------- | ------------ | ------------- | -------------
+Dipres-EVI | 62.74%   | 0.537 | 31.40% 
+Dipres-NDVI | 62.88% | 0.530 | 29.37%
+Dipres-refl4 | 69.10% | 0.607 | 37.20%
+Dipres-all | 67.84% | 0.601 | 36.72% 
+Dipres-refl4-summer | 63.24% | 0.550 | 36.79% 
+Dipres-refl4-class-weights | 65.06% | 0.569 | 38.54% 
+Dipres-refl4-class-weights-readjust | 68.11% | 0.601 | 37.18% 
+Dipres-refl4-class-weights-sask-2015 | 64.28% | 0.561 | 30.00% 
 
 
 <!-- ## Experiment 8: Train dip-res on Saskatchewan and test on Alberta using time series of 4 reflectance channels, using different weights for different classes
