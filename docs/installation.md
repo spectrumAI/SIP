@@ -6,6 +6,7 @@
 ```
 conda create -n py36 python=3.6
 ```
+> If you get a `CondaHTTPError`, see [here](https://github.com/conda/conda/issues/9746#issuecomment-616314792) to resolve.
 
 **Step 3: Activate 'py36':**
 
@@ -22,7 +23,7 @@ conda activate py36
 ```
 conda install pandas
 conda install -c anaconda pyqt
-conda install -c conda-forge/label/TEST gdal=3.1.3
+conda install -c conda-forge/label/TEST gdal
 conda install -c anaconda scikit-image
 conda install -c anaconda scikit-learn
 conda install pyyaml
