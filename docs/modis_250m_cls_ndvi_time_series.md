@@ -14,7 +14,7 @@
 
 ## Study area
 
-* Canada (https://atlas.gc.ca/lcct/en/index.html, http://www.cec.org/sites/default/nalcms/CEC_picmap_EN/index.html)
+* Canada (https://atlas.gc.ca/lcct/en/index.html, http://130.179.67.140/dataset/f2f37ad5-0afa-4fc4-885d-6a6e9f8b6dc8/resource/04a7532d-a7b0-416d-939a-fb950ca8012e/download/iso19131aafcannualcropinventorydataproductspecifications.pdf,https://open.canada.ca/data/en/dataset/ba2645d5-4458-414d-b196-6303ac06c1c9#wb-auto-6, http://www.cec.org/sites/default/nalcms/CEC_picmap_EN/index.html)
 
 ## Classifiers
 
